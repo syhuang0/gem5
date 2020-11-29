@@ -113,6 +113,7 @@ LoopPredictor::getLoop(Addr pc, BranchInfo* bi, bool speculative,
     bi->loopHit = -1;
     bi->loopPredValid = false;
     bi->loopIndex = lindex(pc, instShiftAmt);
+    bi-> numIter = 0;
 
     if (useHashing) {
         unsigned pcShift = logSizeLoopPred - logLoopTableAssoc;
@@ -124,6 +125,7 @@ LoopPredictor::getLoop(Addr pc, BranchInfo* bi, bool speculative,
         bi->loopTag = (pc >> pcShift) & loopTagMask;
         // bi->loopIndexB is not used without hash
     }
+
 
     for (int i = 0; i < (1 << logLoopTableAssoc); i++) {
         int idx = finallindex(bi->loopIndex, bi->loopIndexB, i);
@@ -137,6 +139,7 @@ LoopPredictor::getLoop(Addr pc, BranchInfo* bi, bool speculative,
             if ((iter + 1) == ltable[idx].numIter) {
                 return useDirectionBit ? !(ltable[idx].dir) : false;
             } else {
+                bi-> numIter = ltable[idx].numIter;
                 return useDirectionBit ? (ltable[idx].dir) : true;
             }
         }
@@ -370,4 +373,17 @@ LoopPredictor *
 LoopPredictorParams::create()
 {
     return new LoopPredictor(this);
+}
+
+
+//WH
+uint16_t LoopPredictor::getLptotal(BranchInfo* bi) const
+{
+  if (bi->loopHit >= 0) {
+      if (bi->loopPredValid) {
+          int idx = finallindex(bi->loopIndex, bi->loopIndexB, bi->loopHit);
+          return  ltable[idx].numIter;
+      }
+  }
+  return 0;
 }

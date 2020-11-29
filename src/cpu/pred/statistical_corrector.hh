@@ -47,6 +47,10 @@
 #include "cpu/static_inst.hh"
 #include "sim/sim_object.hh"
 
+//WH
+#include <deque>
+#include <cmath>
+
 struct StatisticalCorrectorParams;
 
 class StatisticalCorrector : public SimObject
@@ -185,12 +189,16 @@ class StatisticalCorrector : public SimObject
     // stats
     Stats::Scalar scPredictorCorrect;
     Stats::Scalar scPredictorWrong;
+
+    Stats::Scalar whPredictorCorrect;
+    Stats::Scalar whPredictorWrong;
   public:
     struct BranchInfo
     {
         BranchInfo() : lowConf(false), highConf(false), altConf(false),
               medConf(false), scPred(false), lsum(0), thres(0),
-              predBeforeSC(false), usedScPred(false)
+              predBeforeSC(false), usedScPred(false), whPred(false),
+              predBeforeWH(false), usedWhPred(false)
         {}
 
         // confidences calculated on tage and used on the statistical
@@ -205,6 +213,11 @@ class StatisticalCorrector : public SimObject
         int thres;
         bool predBeforeSC;
         bool usedScPred;
+
+        // WH
+        bool whPred;
+        bool predBeforeWH;
+        bool usedWhPred;
     };
 
     StatisticalCorrector(const StatisticalCorrectorParams *p);
@@ -268,5 +281,62 @@ class StatisticalCorrector : public SimObject
                           int hitBank, int altBank, int64_t phist);
 
     virtual size_t getSizeInBits() const;
+
+    //WH
+ protected:
+  const unsigned whEntryNum;
+  const unsigned whTagWidth;
+  const unsigned whConfWidth;
+  const unsigned whRankingWidth;
+  const unsigned whLengthWidth;
+  const unsigned whSatCtrWidth;
+  const unsigned whHistLen;
+  const unsigned whSatThresh;
+
+  // final_index[i] = whHistIdxLenMulti*loop_length + whHistIdxOffset[i]
+  // whHistIdxOffset and whHistIdxLenMulti must have the same size
+  const std::vector<int > whHistIdxOffset;
+  const std::vector<int > whHistIdxLenMulti;
+
+
+  struct WhEntry {
+
+      unsigned tag;
+      int conf;
+      unsigned length; // Don't use it. I think this may cause some problems when using with ROB
+      unsigned ranking; // unused;
+      std::deque<bool> hist;
+      std::vector<int> SatCtrs;
+      StatisticalCorrector*  sc;
+
+
+      WhEntry(StatisticalCorrector *);
+
+      void reset();
+
+      void init(unsigned pc, unsigned lpTotal);
+
+      void update(bool taken, bool predBeforeWH, bool whPred, unsigned lpTotal);
+
+      bool usePred(unsigned lpTotal) const;
+
+      bool predict(unsigned lpTotal) const;
+
+      unsigned calcSatIdx(unsigned lpTotal) const;
+
+      bool hit(unsigned pc) const;
+
+  };
+
+  std::deque<WhEntry> whTable;
+
+ public:
+
+  bool whPredict(ThreadID tid, Addr branch_pc, bool cond_branch,
+                 BranchInfo* bi, bool prev_pred_taken,unsigned lpTotal) const;
+
+  void whUpdate(ThreadID tid, Addr branch_pc,bool taken, BranchInfo *bi, unsigned lpTotal);
+
+
 };
 #endif//__CPU_PRED_STATISTICAL_CORRECTOR_HH

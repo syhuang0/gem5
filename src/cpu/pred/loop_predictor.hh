@@ -87,6 +87,7 @@ class LoopPredictor : public SimObject
     Stats::Scalar loopPredictorCorrect;
     Stats::Scalar loopPredictorWrong;
 
+
     /**
      * Updates an unsigned counter based on up/down parameter
      * @param ctr Reference to counter to update.
@@ -121,6 +122,8 @@ class LoopPredictor : public SimObject
     {
         uint16_t loopTag;
         uint16_t currentIter;
+        //WH
+        uint16_t numIter;
 
         bool loopPred;
         bool loopPredValid;
@@ -258,5 +261,9 @@ class LoopPredictor : public SimObject
     LoopPredictor(LoopPredictorParams *p);
 
     size_t getSizeInBits() const;
+
+    //WH
+    uint16_t getLptotal(BranchInfo* bi) const;
+
 };
 #endif//__CPU_PRED_LOOP_PREDICTOR_HH__

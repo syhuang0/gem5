@@ -65,7 +65,19 @@
     extraWeightsWidth(p->extraWeightsWidth),
     scCountersWidth(p->scCountersWidth),
     firstH(0),
-    secondH(0)
+    secondH(0),
+    //WH
+    whEntryNum(5),
+    whTagWidth(18),
+    whConfWidth(4),
+    whRankingWidth(3),
+    whLengthWidth(7),
+    whSatCtrWidth(5),
+    whHistLen(101),
+    whSatThresh(16),
+    whHistIdxOffset{ 0, 0, -1, -2},
+    whHistIdxLenMulti{ 0, 1, 1, 1}
+
 {
     wb.resize(1 << logSizeUps, 4);
 
@@ -80,7 +92,8 @@
     bias.resize(1 << logBias);
     biasSK.resize(1 << logBias);
     biasBank.resize(1 << logBias);
-}
+
+};
 
 StatisticalCorrector::BranchInfo*
 StatisticalCorrector::makeBranchInfo()
@@ -380,6 +393,15 @@ StatisticalCorrector::updateStats(bool taken, BranchInfo *bi)
     } else {
         scPredictorWrong++;
     }
+
+    if (bi->usedWhPred)
+      {
+        if (taken == bi->whPred) {
+            whPredictorCorrect++;
+          } else {
+            whPredictorWrong++;
+          }
+      }
 }
 
 void
@@ -408,4 +430,174 @@ StatisticalCorrector::regStats()
         .name(name() + ".scPredictorWrong")
         .desc("Number of time the SC predictor is the provider and "
               "the prediction is wrong");
+
+  whPredictorCorrect
+      .name(name() + ".whPredictorCorrect")
+      .desc("Number of time the WH predictor is the provider and "
+            "the prediction is correct");
+
+  whPredictorWrong
+      .name(name() + ".scPredictorWrong")
+      .desc("Number of time the WH predictor is the provider and "
+            "the prediction is wrong");
+}
+
+//WH
+
+StatisticalCorrector::WhEntry::WhEntry(StatisticalCorrector* sc):
+sc(sc)
+{
+  tag= 0;
+  conf=0;
+  length=0;
+  ranking=0;
+  hist.resize(sc->whHistLen,false);
+  SatCtrs.resize(1<<sc->whHistIdxOffset.size(),0);
+}
+
+void
+StatisticalCorrector::WhEntry::reset()
+{
+  tag= 0;
+  conf=0;
+  length=0;
+  ranking=0;
+  std::fill(hist.begin(),hist.end(),false);
+  std::fill(SatCtrs.begin(),SatCtrs.end(),0);
+}
+
+void
+StatisticalCorrector::WhEntry::init(unsigned pc, unsigned lpTotal)
+{
+  reset();
+  tag=pc;
+  length=lpTotal;
+}
+
+void
+StatisticalCorrector::WhEntry::update(bool taken, bool predBeforeWH, bool whPred, unsigned lpTotal)
+{
+   if (predBeforeWH!=whPred)
+     {
+       sc->ctrUpdate(conf,whPred==taken,sc->whConfWidth);
+     }
+
+  sc->ctrUpdate (SatCtrs[calcSatIdx(lpTotal)],taken,sc->whSatCtrWidth);
+
+  hist.pop_back();
+  hist.push_front(taken);
+}
+
+bool
+StatisticalCorrector::WhEntry::usePred(unsigned lpTotal) const
+{
+   unsigned satIdx = calcSatIdx(lpTotal);
+  int SatVal = SatCtrs[satIdx];
+  return (abs(2*SatVal+1)>sc->whSatThresh) && conf > 0;
+}
+
+bool
+StatisticalCorrector::WhEntry::predict(unsigned lpTotal)  const
+{
+  unsigned satIdx = calcSatIdx(lpTotal);
+  int SatVal = SatCtrs[satIdx];
+  return SatVal >=0;
+}
+
+unsigned
+StatisticalCorrector::WhEntry::calcSatIdx(unsigned lpTotal) const
+{
+  unsigned idx = 0;
+
+  for(int i=0;i<sc->whHistIdxOffset.size();i++)
+    {
+      idx<<=1;
+      idx|=hist[sc->whHistIdxOffset[i]+lpTotal*sc->whHistIdxLenMulti[i]];
+    }
+
+  return idx;
+}
+
+bool
+StatisticalCorrector::WhEntry::hit(unsigned pc)  const
+{
+  return tag==pc;
+}
+
+
+bool
+StatisticalCorrector::whPredict(ThreadID tid, Addr branch_pc, bool cond_branch,
+    BranchInfo* bi, bool prev_pred_taken,unsigned lpTotal)  const
+{
+  bool pred_taken = prev_pred_taken;
+
+  bi->predBeforeWH = prev_pred_taken;
+  if (cond_branch)
+    {
+      if (abs (bi->lsum) < bi->thres) //problematic branch
+        {
+          // lsum < thres; use WH instead
+          for (int i = 0; i < whTable.size (); i++)
+            {
+              if (whTable[i].hit (branch_pc))
+                {
+                  // pc hit
+
+                  auto &whEntry = whTable[i];
+                  bool whPred = whEntry.predict (lpTotal);
+
+                  bi->whPred = whPred;
+
+                  if (whEntry.usePred (lpTotal))
+                    {
+                      bi->usedWhPred = true;
+                      pred_taken = whPred;
+                    }
+                  break;
+                }
+            }
+        }
+    }
+  return pred_taken;
+}
+
+void
+StatisticalCorrector::whUpdate(ThreadID tid, Addr branch_pc,bool taken, BranchInfo *bi,
+    unsigned lpTotal)
+{
+  int whIdx = -1;
+
+  for(int i=0;i<whTable.size(); i++)
+    {
+      if (whTable[i].hit(branch_pc))
+        {
+          whIdx = i;
+          break;
+        }
+    }
+
+  if (whIdx >=0) // entry hit
+    {
+      // update entry
+      whTable[whIdx].update(taken,bi->predBeforeWH,bi->whPred, lpTotal);
+
+      if(abs(bi->lsum) < bi->thres) // problematic branch
+        {
+          // increase ranking;
+          if (whIdx>0)
+            {
+              std::swap(whTable[whIdx-1],whTable[whIdx]);
+            }
+        }
+    }
+    else
+    {
+      //allocate new entry;
+      if (whTable.size()<whEntryNum)
+        {
+          whTable.push_back(WhEntry(this));
+        }
+      whTable.back().init(branch_pc, lpTotal);
+
+    }
 }

@@ -40,6 +40,8 @@
  * It consits of a TAGE + a statistical corrector (SC) + a loop predictor (L)
  */
 
+#include <iostream>
+
 #include "cpu/pred/tage_sc_l.hh"
 
 #include "base/random.hh"
@@ -375,6 +377,8 @@ TAGE_SC_L::predict(ThreadID tid, Addr branch_pc, bool cond_branch, void* &b)
                                             bi->lpBranchInfo, pred_taken,
                                             instShiftAmt);
 
+    std::cerr<<bi->lpBranchInfo->numIter<<std::endl;
+
     if (bi->lpBranchInfo->loopPredUsed) {
         bi->tageBranchInfo->provider = LOOP;
     }
@@ -402,6 +406,10 @@ TAGE_SC_L::predict(ThreadID tid, Addr branch_pc, bool cond_branch, void* &b)
     if (bi->scBranchInfo->usedScPred) {
         bi->tageBranchInfo->provider = SC;
     }
+
+    //WH
+    pred_taken = statisticalCorrector-> whPredict(tid, branch_pc, cond_branch,
+        bi->scBranchInfo,pred_taken,bi->lpBranchInfo->numIter);
 
     // record final prediction
     bi->lpBranchInfo->predTaken = pred_taken;
@@ -440,6 +448,9 @@ TAGE_SC_L::update(ThreadID tid, Addr branch_pc, bool taken, void *bp_history,
         loopPredictor->updateStats(taken, bi->lpBranchInfo);
 
         statisticalCorrector->updateStats(taken, bi->scBranchInfo);
+
+        statisticalCorrector->whUpdate(tid, branch_pc, taken, bi->scBranchInfo,
+                                       bi->lpBranchInfo->numIter);
 
         bool bias = (bi->tageBranchInfo->longestMatchPred !=
                      bi->tageBranchInfo->altTaken);
