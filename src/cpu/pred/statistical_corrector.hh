@@ -198,7 +198,7 @@ class StatisticalCorrector : public SimObject
         BranchInfo() : lowConf(false), highConf(false), altConf(false),
               medConf(false), scPred(false), lsum(0), thres(0),
               predBeforeSC(false), usedScPred(false), whPred(false),
-              predBeforeWH(false), usedWhPred(false)
+              predBeforeWH(false), usedWhPred(false), whSatIdx(0)
         {}
 
         // confidences calculated on tage and used on the statistical
@@ -218,6 +218,7 @@ class StatisticalCorrector : public SimObject
         bool whPred;
         bool predBeforeWH;
         bool usedWhPred;
+        unsigned int whSatIdx;
     };
 
     StatisticalCorrector(const StatisticalCorrectorParams *p);
@@ -316,7 +317,7 @@ class StatisticalCorrector : public SimObject
 
       void init(unsigned pc, unsigned lpTotal);
 
-      void update(bool taken, bool predBeforeWH, bool whPred, unsigned lpTotal);
+      void update(bool taken, bool predBeforeWH, bool whPred, unsigned lpTotal, unsigned satIdx);
 
       bool usePred(unsigned lpTotal) const;
 
@@ -329,6 +330,8 @@ class StatisticalCorrector : public SimObject
   };
 
   std::deque<WhEntry> whTable;
+
+  bool validWhLength(unsigned lpTotal);
 
  public:
 

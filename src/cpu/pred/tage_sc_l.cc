@@ -377,7 +377,8 @@ TAGE_SC_L::predict(ThreadID tid, Addr branch_pc, bool cond_branch, void* &b)
                                             bi->lpBranchInfo, pred_taken,
                                             instShiftAmt);
 
-    std::cerr<<bi->lpBranchInfo->numIter<<std::endl;
+    if (bi->lpBranchInfo->numIter > 0)
+      std::cerr<<bi->lpBranchInfo->numIter<<std::endl;
 
     if (bi->lpBranchInfo->loopPredUsed) {
         bi->tageBranchInfo->provider = LOOP;

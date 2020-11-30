@@ -122,8 +122,6 @@ class LoopPredictor : public SimObject
     {
         uint16_t loopTag;
         uint16_t currentIter;
-        //WH
-        uint16_t numIter;
 
         bool loopPred;
         bool loopPredValid;
@@ -133,11 +131,15 @@ class LoopPredictor : public SimObject
         int loopHit;
         bool predTaken;
 
+        //WH
+        uint16_t numIter;
+
         BranchInfo()
             : loopTag(0), currentIter(0),
               loopPred(false),
               loopPredValid(false), loopIndex(0), loopIndexB(0), loopHit(0),
-              predTaken(false)
+              predTaken(false),
+              numIter(0)
         {}
     };
 

@@ -113,7 +113,6 @@ LoopPredictor::getLoop(Addr pc, BranchInfo* bi, bool speculative,
     bi->loopHit = -1;
     bi->loopPredValid = false;
     bi->loopIndex = lindex(pc, instShiftAmt);
-    bi-> numIter = 0;
 
     if (useHashing) {
         unsigned pcShift = logSizeLoopPred - logLoopTableAssoc;
@@ -139,7 +138,8 @@ LoopPredictor::getLoop(Addr pc, BranchInfo* bi, bool speculative,
             if ((iter + 1) == ltable[idx].numIter) {
                 return useDirectionBit ? !(ltable[idx].dir) : false;
             } else {
-                bi-> numIter = ltable[idx].numIter;
+                if (ltable[idx].numIter > 0)
+                  bi-> numIter = ltable[idx].numIter - 1;
                 return useDirectionBit ? (ltable[idx].dir) : true;
             }
         }
@@ -273,6 +273,7 @@ LoopPredictor::loopPredict(ThreadID tid, Addr branch_pc, bool cond_branch,
                    BranchInfo* bi, bool prev_pred_taken, unsigned instShiftAmt)
 {
     bool pred_taken = prev_pred_taken;
+
     if (cond_branch) {
         // loop prediction
         bi->loopPred = getLoop(branch_pc, bi, useSpeculation, instShiftAmt);
@@ -382,7 +383,8 @@ uint16_t LoopPredictor::getLptotal(BranchInfo* bi) const
   if (bi->loopHit >= 0) {
       if (bi->loopPredValid) {
           int idx = finallindex(bi->loopIndex, bi->loopIndexB, bi->loopHit);
-          return  ltable[idx].numIter;
+          if (ltable[idx].numIter > 0)
+          return  ltable[idx].numIter - 1;
       }
   }
   return 0;
