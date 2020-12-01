@@ -6,10 +6,11 @@ int main()
 	{
 		for(j=0;j<b;j++)
 		{
-			if (b==2 || b==5 || b==8)
+	
+			if (j%3==1)
 			{
-				for( k=0;k<100;k++)
-					sum+=k;
+				sum++;
+		
 			}
 			sum++;
 			sum++;
