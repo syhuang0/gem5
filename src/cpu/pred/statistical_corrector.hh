@@ -307,6 +307,7 @@ class StatisticalCorrector : public SimObject
       unsigned length; // Don't use it. I think this may cause some problems when using with ROB
       unsigned ranking; // unused;
       std::deque<bool> hist;
+      std::deque<std::pair<bool, void const *>> spec_hist;
       std::vector<int> SatCtrs;
       StatisticalCorrector*  sc;
 
@@ -317,13 +318,13 @@ class StatisticalCorrector : public SimObject
 
       void init(unsigned pc, unsigned lpTotal);
 
-      void update(bool taken, bool predBeforeWH, bool whPred, unsigned lpTotal, unsigned satIdx);
+      void update(bool taken, bool predBeforeWH, bool whPred, unsigned lpTotal, void const *bi);
 
       bool usePred(unsigned lpTotal) const;
 
-      bool predict(unsigned lpTotal) const;
+      bool predict(unsigned lpTotal,void const *bi);
 
-      unsigned calcSatIdx(unsigned lpTotal) const;
+      unsigned calcSatIdx(unsigned lpTotal, bool spec=false) const;
 
       bool hit(unsigned pc) const;
 
@@ -336,7 +337,7 @@ class StatisticalCorrector : public SimObject
  public:
 
   bool whPredict(ThreadID tid, Addr branch_pc, bool cond_branch,
-                 BranchInfo* bi, bool prev_pred_taken,unsigned lpTotal) const;
+                 BranchInfo* bi, bool prev_pred_taken,unsigned lpTotal);
 
   void whUpdate(ThreadID tid, Addr branch_pc,bool taken, BranchInfo *bi, unsigned lpTotal);
 
