@@ -493,8 +493,8 @@ StatisticalCorrector::WhEntry::update(bool taken, bool predBeforeWH, bool whPred
 
   sc->ctrUpdate (SatCtrs[satIdx],taken,sc->whSatCtrWidth);
 
-  std::cerr<<"update taken: "<<taken<<" before wh: "<<predBeforeWH<<" whPred: "<<whPred<<" lptotal: "<<length<<
-           " sat: "<<SatCtrs[satIdx]<<" satIdx: "<<satIdx<<" spec satIdx: "<< reinterpret_cast<const BranchInfo *>(bi)->whSatIdx<<std::endl;
+  // std::cerr<<"update taken: "<<taken<<" before wh: "<<predBeforeWH<<" whPred: "<<whPred<<" lptotal: "<<length<<
+  //          " sat: "<<SatCtrs[satIdx]<<" satIdx: "<<satIdx<<" spec satIdx: "<< reinterpret_cast<const BranchInfo *>(bi)->whSatIdx<<std::endl;
 
   while(!spec_hist.empty())
     {
@@ -516,7 +516,7 @@ StatisticalCorrector::WhEntry::usePred(unsigned lpTotal) const
 
   unsigned satIdx = calcSatIdx(length,true);
   int SatVal = SatCtrs[satIdx];
-  std::cerr<<"usePred SatVal: "<<SatVal<<" satIdx: "<<satIdx<<" conf: "<<conf<<std::endl;
+  // std::cerr<<"usePred SatVal: "<<SatVal<<" satIdx: "<<satIdx<<" conf: "<<conf<<std::endl;
   return (abs(2*SatVal+1)>sc->whSatThresh) && conf > 0;
 }
 
@@ -527,7 +527,7 @@ StatisticalCorrector::WhEntry::predict(unsigned lpTotal, void const *bi)
   unsigned satIdx = calcSatIdx(lpTotal,true);
   int SatVal = SatCtrs[satIdx];
   bool pred = SatVal >=0;
-  std::cerr<<"predict SatVal: "<<SatVal<<" "<<" satIdx: "<<satIdx<<std::endl;
+  //std::cerr<<"predict SatVal: "<<SatVal<<" "<<" satIdx: "<<satIdx<<std::endl;
   spec_hist.push_front(std::make_pair(pred, bi));
   return pred;
 }
@@ -594,7 +594,7 @@ StatisticalCorrector::whPredict(ThreadID tid, Addr branch_pc, bool cond_branch,
             {
               if (whTable[i].hit (branch_pc))
                 {
-                  std::cerr<<bi<<std::endl;
+                  // std::cerr<<bi<<std::endl;
                   // pc hit
                   auto &whEntry = whTable[i];
                   unsigned int whSatIdx = whEntry.calcSatIdx(lpTotal,true);
@@ -626,7 +626,7 @@ StatisticalCorrector::whUpdate(ThreadID tid, Addr branch_pc,bool taken, BranchIn
   if (!validWhLength(lpTotal))
     return;;
 
-  std::cerr<<bi<<std::endl;
+  // std::cerr<<bi<<std::endl;
 
   for(int i=0;i<whTable.size(); i++)
     {
@@ -639,13 +639,13 @@ StatisticalCorrector::whUpdate(ThreadID tid, Addr branch_pc,bool taken, BranchIn
 
   if (whIdx >=0) // entry hit
     {
-      std::cerr<<"update wh entry"<<std::endl;
+      // std::cerr<<"update wh entry"<<std::endl;
       // update entry
       whTable[whIdx].update(taken,bi->predBeforeWH,bi->whPred, lpTotal, bi);
 
       if(abs(bi->lsum) < bi->thres) // problematic branch
         {
-          std::cerr<<"increase wh rank"<<std::endl;
+          // std::cerr<<"increase wh rank"<<std::endl;
           // increase ranking;
           if (whIdx>0)
             {
@@ -655,7 +655,7 @@ StatisticalCorrector::whUpdate(ThreadID tid, Addr branch_pc,bool taken, BranchIn
     }
     else
     {
-      std::cerr<<"allocate wh entry"<<std::endl;
+      // std::cerr<<"allocate wh entry"<<std::endl;
       //allocate new entry;
       if (whTable.size()<whEntryNum)
         {
