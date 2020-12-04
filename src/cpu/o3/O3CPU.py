@@ -74,9 +74,9 @@ class DerivO3CPU(BaseCPU):
 
     activity = Param.Unsigned(0, "Initial count")
 
-    cacheStorePorts = Param.Unsigned(200, "Cache Ports. "
+    cacheStorePorts = Param.Unsigned(2, "Cache Ports. "
           "Constrains stores only.")
-    cacheLoadPorts = Param.Unsigned(200, "Cache Ports. "
+    cacheLoadPorts = Param.Unsigned(2, "Cache Ports. "
           "Constrains loads only.")
 
     decodeToFetchDelay = Param.Cycles(1, "Decode to fetch delay")
@@ -109,7 +109,7 @@ class DerivO3CPU(BaseCPU):
     issueToExecuteDelay = Param.Cycles(1, "Issue to execute delay (internal "
               "to the IEW stage)")
     dispatchWidth = Param.Unsigned(8, "Dispatch width")
-    issueWidth = Param.Unsigned(8, "Issue width")
+    issueWidth = Param.Unsigned(4, "Issue width")
     wbWidth = Param.Unsigned(8, "Writeback width")
     fuPool = Param.FUPool(DefaultFUPool(), "Functional Unit pool")
 
@@ -155,7 +155,7 @@ class DerivO3CPU(BaseCPU):
                                       "registers")
     numPhysCCRegs = Param.Unsigned(_defaultNumPhysCCRegs,
                                    "Number of physical cc registers")
-    numIQEntries = Param.Unsigned(64, "Number of instruction queue entries")
+    numIQEntries = Param.Unsigned(40, "Number of instruction queue entries")
     numROBEntries = Param.Unsigned(192, "Number of reorder buffer entries")
 
     smtNumFetchingThreads = Param.Unsigned(1, "SMT Number of Fetching Threads")
