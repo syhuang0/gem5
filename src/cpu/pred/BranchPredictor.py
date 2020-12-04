@@ -371,6 +371,23 @@ class StatisticalCorrector(SimObject):
     initialUpdateThresholdValue = Param.Int(0,
         "Initial pUpdate threshold counter value")
 
+class WormholePredictor(SimObject):
+    type = 'WormholePredictor'
+    cxx_class  = 'WormholePredictor'
+    cxx_header = "cpu/pred/wormhole_predictor.hh"
+
+    # wormhole predictor parameters
+    # Param.Int
+    confMin = Param.Int(-11, "A saturating counter that tracks how well wormhole is predicting the corresponding branch")
+    confMax = Param.Int(4, "A saturating counter that tracks how well wormhole is predicting the corresponding branch")
+    SatCtrMin = Param.Int(-8, "A table of counters that provide the direction prediction.")
+    SatCtrMax = Param.Int(7, "A table of counters that provide the direction prediction.")
+    HistoryVectorSize = Param.Unsigned(101, "the local history size of the branch" )
+    SatCtrThres = Param.Unsigned(8, "Saturating counter threshold for a prediction")
+    SatCtrSize = Param.Unsigned(16, "saturating counter width")
+    whtsize = Param.Unsigned(5, "the size of the wormhole table")
+    stats_threshold = Param.Unsigned(2, "stat correlator threshold for allocating an entry in wormhole table")
+
 # TAGE-SC-L branch predictor as desribed in
 # https://www.jilp.org/cbp2016/paper/AndreSeznecLimited.pdf
 # It is a modified LTAGE predictor plus a statistical corrector predictor
@@ -391,6 +408,7 @@ class TAGE_SC_L(LTAGE):
 
     statistical_corrector = Param.StatisticalCorrector(
         "Statistical Corrector")
+    wormholepredictor = Param.WormholePredictor("Wormhole Predictor")
 
 class TAGE_SC_L_64KB_LoopPredictor(TAGE_SC_L_LoopPredictor):
     logSizeLoopPred = 5

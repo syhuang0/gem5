@@ -45,6 +45,7 @@
 
 #include "cpu/pred/ltage.hh"
 #include "cpu/pred/statistical_corrector.hh"
+#include "cpu/pred/wormhole_predictor.hh"
 #include "params/TAGE_SC_L.hh"
 #include "params/TAGE_SC_L_LoopPredictor.hh"
 #include "params/TAGE_SC_L_TAGE.hh"
@@ -148,6 +149,8 @@ class TAGE_SC_L_LoopPredictor : public LoopPredictor
 class TAGE_SC_L: public LTAGE
 {
     StatisticalCorrector *statisticalCorrector;
+    WormholePredictor *wormholepredictor;
+
   public:
     TAGE_SC_L(const TAGE_SC_LParams *params);
 
@@ -165,15 +168,17 @@ class TAGE_SC_L: public LTAGE
     struct TageSCLBranchInfo : public LTageBranchInfo
     {
         StatisticalCorrector::BranchInfo *scBranchInfo;
+        WormholePredictor::BranchInfo *whBranchInfo;
 
         TageSCLBranchInfo(TAGEBase &tage, StatisticalCorrector &sc,
-                          LoopPredictor &lp)
-          : LTageBranchInfo(tage, lp), scBranchInfo(sc.makeBranchInfo())
+                          LoopPredictor &lp, WormholePredictor & wh)
+          : LTageBranchInfo(tage, lp), scBranchInfo(sc.makeBranchInfo()), whBranchInfo(wh.makeBranchInfo())
         {}
 
         virtual ~TageSCLBranchInfo()
         {
             delete scBranchInfo;
+            delete whBranchInfo;
         }
     };
 

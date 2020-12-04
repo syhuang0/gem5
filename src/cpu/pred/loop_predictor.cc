@@ -132,14 +132,20 @@ LoopPredictor::getLoop(Addr pc, BranchInfo* bi, bool speculative,
             bi->loopHit = i;
             bi->loopPredValid = calcConf(idx);
 
+            if(bi->loopPredValid){
+                bi->numIter = 0;
+            }
+
             uint16_t iter = speculative ? ltable[idx].currentIterSpec
                                         : ltable[idx].currentIter;
 
             if ((iter + 1) == ltable[idx].numIter) {
                 return useDirectionBit ? !(ltable[idx].dir) : false;
             } else {
-                if (ltable[idx].numIter > 0)
-                  bi-> numIter = ltable[idx].numIter - 1;
+                if(bi->loopPredValid){
+                    bi->numIter = ltable[idx].numIter;
+                }
+                
                 return useDirectionBit ? (ltable[idx].dir) : true;
             }
         }
