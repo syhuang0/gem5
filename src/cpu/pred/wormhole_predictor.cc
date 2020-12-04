@@ -112,7 +112,7 @@ WormholePredictor::WhPredict(ThreadID tid, Addr branch_pc, bool cond_branch,
                         // get prediction from saturating counter
                         bi->whPred = (whTable[pcIndex].SatCtrs[bi->whIdx] >=0);
                         
-                        if (whTable[pcIndex].conf >= 0 && (abs((2*bi->whPred) + 1) >= SatCtrThres)) {
+                        if (whTable[pcIndex].conf >= 0 && (abs((2*whTable[pcIndex].SatCtrs[bi->whIdx]) + 1) >= SatCtrThres)) {
                             pred_taken = bi->whPred;
                             bi->usedWhPred = true;
                         }

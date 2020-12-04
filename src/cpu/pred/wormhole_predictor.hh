@@ -54,7 +54,7 @@ class WormholePredictor : public SimObject
             // variables for propagating prediction info to the update function
             bool whPred;
             unsigned int whIdx;
-            BranchInfo(): whLPTotal(0), whPred(false), whIdx(0) {}
+            BranchInfo(): whLPTotal(0), usedWhPred(false), whPred(false), whIdx(0) {}
             
         };
 
