@@ -396,14 +396,14 @@ StatisticalCorrector::updateStats(bool taken, BranchInfo *bi)
         scPredictorWrong++;
     }
 
-    if (bi->usedWhPred)
-      {
-        if (taken == bi->whPred) {
-            whPredictorCorrect++;
-          } else {
-            whPredictorWrong++;
-          }
-      }
+    // if (bi->usedWhPred)
+    //   {
+    //     if (taken == bi->whPred) {
+    //         whPredictorCorrect++;
+    //       } else {
+    //         whPredictorWrong++;
+    //       }
+    //   }
 
 
 
@@ -436,15 +436,15 @@ StatisticalCorrector::regStats()
         .desc("Number of time the SC predictor is the provider and "
               "the prediction is wrong");
 
-  whPredictorCorrect
-      .name(name() + ".whPredictorCorrect")
-      .desc("Number of time the WH predictor is the provider and "
-            "the prediction is correct");
+  // whPredictorCorrect
+  //     .name(name() + ".whPredictorCorrect")
+  //     .desc("Number of time the WH predictor is the provider and "
+  //           "the prediction is correct");
 
-  whPredictorWrong
-      .name(name() + ".whPredictorWrong")
-      .desc("Number of time the WH predictor is the provider and "
-            "the prediction is wrong");
+  // whPredictorWrong
+  //     .name(name() + ".whPredictorWrong")
+  //     .desc("Number of time the WH predictor is the provider and "
+  //           "the prediction is wrong");
 }
 
 //WH

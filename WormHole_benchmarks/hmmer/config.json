@@ -1112,6 +1112,22 @@
                 "smtROBThreshold": 100, 
                 "numIQEntries": 64, 
                 "branchPred": {
+                    "wormholepredictor": {
+                        "confMin": -11, 
+                        "stats_threshold": 2, 
+                        "name": "wormholepredictor", 
+                        "SatCtrSize": 16, 
+                        "HistoryVectorSize": 101, 
+                        "SatCtrMin": -8, 
+                        "confMax": 4, 
+                        "SatCtrMax": 7, 
+                        "eventq_index": 0, 
+                        "SatCtrThres": 8, 
+                        "cxx_class": "WormholePredictor", 
+                        "path": "system.cpu.branchPred.wormholepredictor", 
+                        "type": "WormholePredictor", 
+                        "whtsize": 5
+                    }, 
                     "name": "branchPred", 
                     "numThreads": 1, 
                     "indirectBranchPred": {

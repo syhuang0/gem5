@@ -497,6 +497,7 @@ class TAGE_SC_L_64KB(TAGE_SC_L):
     tage = TAGE_SC_L_TAGE_64KB()
     loop_predictor = TAGE_SC_L_64KB_LoopPredictor()
     statistical_corrector = TAGE_SC_L_64KB_StatisticalCorrector()
+    wormholepredictor = WormholePredictor()
 
 # 8KB TAGE-SC-L branch predictor as described in
 # http://www.jilp.org/cbp2016/paper/AndreSeznecLimited.pdf
@@ -508,6 +509,7 @@ class TAGE_SC_L_8KB(TAGE_SC_L):
     tage = TAGE_SC_L_TAGE_8KB()
     loop_predictor = TAGE_SC_L_8KB_LoopPredictor()
     statistical_corrector = TAGE_SC_L_8KB_StatisticalCorrector()
+    wormholepredictor = WormholePredictor()
 
 class MultiperspectivePerceptron(BranchPredictor):
     type = 'MultiperspectivePerceptron'

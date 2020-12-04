@@ -109,6 +109,7 @@ class WormholePredictor : public SimObject
         Stats::Scalar whPredictorWrong;
 
     
+        void regStats() override;
 
     public:
 
@@ -116,6 +117,7 @@ class WormholePredictor : public SimObject
             return HistoryVectorSize;
         }
 
+    
 
     protected:
         void updatePrediction(Addr pc, bool Taken, BranchInfo* bi, bool tage_pred);

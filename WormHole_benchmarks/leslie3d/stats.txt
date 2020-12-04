@@ -1,11 +1,11 @@
 
 ---------- Begin Simulation Statistics ----------
 final_tick                                  633191500                       # Number of ticks from beginning of simulation (restored from checkpoints and never reset)
-host_inst_rate                                 128372                       # Simulator instruction rate (inst/s)
-host_mem_usage                                 858344                       # Number of bytes of host memory used
-host_op_rate                                   131857                       # Simulator op (including micro ops) rate (op/s)
-host_seconds                                     7.79                       # Real time elapsed on the host
-host_tick_rate                               81282013                       # Simulator tick rate (ticks/s)
+host_inst_rate                                 106950                       # Simulator instruction rate (inst/s)
+host_mem_usage                                 858372                       # Number of bytes of host memory used
+host_op_rate                                   109854                       # Simulator op (including micro ops) rate (op/s)
+host_seconds                                     9.35                       # Real time elapsed on the host
+host_tick_rate                               67718396                       # Simulator tick rate (ticks/s)
 sim_freq                                 1000000000000                       # Frequency of simulated ticks
 sim_insts                                     1000001                       # Number of instructions simulated
 sim_ops                                       1027168                       # Number of ops (including micro ops) simulated
@@ -26,8 +26,6 @@ system.cpu.branchPred.loop_predictor.loopPredictorCorrect       220585          
 system.cpu.branchPred.loop_predictor.loopPredictorWrong        15411                       # Number of times the loop predictor is the provider and the prediction is wrong
 system.cpu.branchPred.statistical_corrector.scPredictorCorrect        14913                       # Number of time the SC predictor is the provider and the prediction is correct
 system.cpu.branchPred.statistical_corrector.scPredictorWrong       221083                       # Number of time the SC predictor is the provider and the prediction is wrong
-system.cpu.branchPred.statistical_corrector.whPredictorCorrect            0                       # Number of time the WH predictor is the provider and the prediction is correct
-system.cpu.branchPred.statistical_corrector.whPredictorWrong            0                       # Number of time the WH predictor is the provider and the prediction is wrong
 system.cpu.branchPred.tage.bimodalAltMatchProviderCorrect          236                       # Number of times TAGE Alt Match is the bimodal and it is the provider and the prediction is correct
 system.cpu.branchPred.tage.bimodalAltMatchProviderWrong           71                       # Number of times TAGE Alt Match is the bimodal and it is the provider and the prediction is wrong
 system.cpu.branchPred.tage.tageAltMatchProvider::0         6676                       # TAGE provider for alt match
@@ -58,7 +56,7 @@ system.cpu.branchPred.tage.tageAltMatchProvider::24          863                
 system.cpu.branchPred.tage.tageAltMatchProvider::25            0                       # TAGE provider for alt match
 system.cpu.branchPred.tage.tageAltMatchProvider::26         2717                       # TAGE provider for alt match
 system.cpu.branchPred.tage.tageAltMatchProvider::27            0                       # TAGE provider for alt match
-system.cpu.branchPred.tage.tageAltMatchProvider::28         4349                       # TAGE provider for alt match
+system.cpu.branchPred.tage.tageAltMatchProvider::28         4338                       # TAGE provider for alt match
 system.cpu.branchPred.tage.tageAltMatchProvider::29            0                       # TAGE provider for alt match
 system.cpu.branchPred.tage.tageAltMatchProvider::30            0                       # TAGE provider for alt match
 system.cpu.branchPred.tage.tageAltMatchProviderCorrect          548                       # Number of times TAGE Alt Match is the provider and the prediction is correct
@@ -96,11 +94,13 @@ system.cpu.branchPred.tage.tageLongestMatchProvider::26          255            
 system.cpu.branchPred.tage.tageLongestMatchProvider::27            0                       # TAGE provider for longest match
 system.cpu.branchPred.tage.tageLongestMatchProvider::28          830                       # TAGE provider for longest match
 system.cpu.branchPred.tage.tageLongestMatchProvider::29            0                       # TAGE provider for longest match
-system.cpu.branchPred.tage.tageLongestMatchProvider::30         7171                       # TAGE provider for longest match
-system.cpu.branchPred.tage.tageLongestMatchProviderCorrect       176091                       # Number of times TAGE Longest Match is the provider and the prediction is correct
+system.cpu.branchPred.tage.tageLongestMatchProvider::30         7160                       # TAGE provider for longest match
+system.cpu.branchPred.tage.tageLongestMatchProviderCorrect       176080                       # Number of times TAGE Longest Match is the provider and the prediction is correct
 system.cpu.branchPred.tage.tageLongestMatchProviderWouldHaveHit          124                       # Number of times TAGE Alt Match is the provider, the prediction is wrong and Longest Match prediction was correct
 system.cpu.branchPred.tage.tageLongestMatchProviderWrong         1242                       # Number of times TAGE Longest Match is the provider and the prediction is wrong
 system.cpu.branchPred.usedRAS                    5816                       # Number of times the RAS was used to get a target.
+system.cpu.branchPred.wormholepredictor.whPredictorCorrect          742                       # Number of time the WH predictor is the provider and the prediction is correct
+system.cpu.branchPred.wormholepredictor.whPredictorWrong         1992                       # Number of time the WH predictor is the provider and the prediction is wrong
 system.cpu.branchPredindirectMispredicted          229                       # Number of mispredicted indirect branches.
 system.cpu.cc_regfile_reads                    741872                       # number of cc regfile reads
 system.cpu.cc_regfile_writes                   745941                       # number of cc regfile writes

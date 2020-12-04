@@ -124,6 +124,22 @@ WormholePredictor::WhPredict(ThreadID tid, Addr branch_pc, bool cond_branch,
     return pred_taken;
 }
 
+void
+WormholePredictor::regStats()
+{
+
+
+  whPredictorCorrect
+      .name(name() + ".whPredictorCorrect")
+      .desc("Number of time the WH predictor is the provider and "
+            "the prediction is correct");
+
+  whPredictorWrong
+      .name(name() + ".whPredictorWrong")
+      .desc("Number of time the WH predictor is the provider and "
+            "the prediction is wrong");
+}
+
 void 
 WormholePredictor::UpdateRanking(ThreadID tid, Addr branch_pc, int lsum, bool loopPredValid, 
                                  unsigned int instShiftAmt)
