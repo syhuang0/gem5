@@ -95,7 +95,7 @@ class WormholePredictor : public SimObject
         };
 
         uint64_t getPCtag(Addr branch_pc, unsigned instShiftAmt){
-            uint64_t PC = (branch_pc >>instShiftAmt) & 0x3ffff;
+            uint64_t PC = (branch_pc>>instShiftAmt) & 0x3ffff;
             return PC;
         }
 

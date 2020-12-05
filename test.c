@@ -1,6 +1,6 @@
 int main()
 {
-	int i,j,k,a=1000,b=10;
+	int i,j,k,a=1000,b=50;
         int sum=0;
 	for(i=0;i<a;i++)
 	{
@@ -9,7 +9,10 @@ int main()
 	
 			if (j%3==1)
 			{
-				sum++;
+				sum--;
+				sum--;
+				sum--;
+				sum--;
 		
 			}
 			sum++;

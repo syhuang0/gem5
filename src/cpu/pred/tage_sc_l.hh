@@ -184,7 +184,8 @@ class TAGE_SC_L: public LTAGE
 
     // more provider types
     enum {
-        SC = LAST_LTAGE_PROVIDER_TYPE + 1
+        SC = LAST_LTAGE_PROVIDER_TYPE + 1,
+        WH = LAST_LTAGE_PROVIDER_TYPE + 2
     };
 
 };

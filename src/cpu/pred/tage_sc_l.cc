@@ -377,13 +377,19 @@ TAGE_SC_L::predict(ThreadID tid, Addr branch_pc, bool cond_branch, void* &b)
                                             bi->lpBranchInfo, pred_taken,
                                             instShiftAmt);
 
-    // if (bi->lpBranchInfo->numIter > 0)
-    //   std::cerr<<bi->lpBranchInfo->numIter<<std::endl;
+    
+    if (bi->lpBranchInfo->numIter > 0){
+        // std::cerr<<"Wise Tage Prediciton\n";
+        // // std::cerr << "PC: "<< branch_pc;
+        //   std::cerr<<" .loop BranchInfo->numIter: " << bi->lpBranchInfo->numIter<< " Loop Valid: " <<bi->lpBranchInfo->loopPredValid<< std::endl;
+
+    }
 
     if(bi->lpBranchInfo->loopPredValid){ // if loop hit, record number of iterations in loop
         bi->whBranchInfo->whLPTotal = 0;
         if(bi->lpBranchInfo->numIter <= wormholepredictor->getHistorySize()){
             bi->whBranchInfo->whLPTotal = bi->lpBranchInfo->numIter;
+            // // std::cerr << "wormhole branchinfo->whLPTotal: " << bi->whBranchInfo->whLPTotal << std::endl;
         }
         
     }
@@ -417,9 +423,14 @@ TAGE_SC_L::predict(ThreadID tid, Addr branch_pc, bool cond_branch, void* &b)
     }
 
     //WH
-    // pred_taken = statisticalCorrector-> whPredict(tid, branch_pc, cond_branch,
-    //     bi->scBranchInfo,pred_taken,bi->lpBranchInfo->numIter);
+    pred_taken = statisticalCorrector-> whPredict(tid, branch_pc, cond_branch,
+        bi->scBranchInfo,pred_taken,bi->lpBranchInfo->numIter);
     pred_taken = wormholepredictor->WhPredict(tid, branch_pc, cond_branch, bi->whBranchInfo, pred_taken, instShiftAmt);
+
+    if(bi->whBranchInfo->usedWhPred){
+        // cerr << 
+        bi->tageBranchInfo->provider = WH;
+    }
 
     // record final prediction
     bi->lpBranchInfo->predTaken = pred_taken;

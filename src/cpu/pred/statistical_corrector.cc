@@ -270,6 +270,9 @@ StatisticalCorrector::scPredict(ThreadID tid, Addr branch_pc, bool cond_branch,
         bi->thres = thres;
 
         bool scPred = (lsum >= 0);
+        // if(lsum > 0){
+        //   // // std::cerr << "statistical corrector lsum: "<<lsum << std::endl;
+        // }
 
         if (pred_taken != scPred) {
             bool useScPred = true;
