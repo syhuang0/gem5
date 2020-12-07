@@ -117,6 +117,9 @@ WormholePredictor::WhPredict(ThreadID tid, Addr branch_pc, bool cond_branch,
                 if (whTable[pcIndex].localhist.size() > ((unsigned int)bi->whLPTotal)) {
 
                     // generate index using 2D local history bits
+                    // std::cerr << "\nWormHole Prediction\n";
+                // std::cerr << "PCtag: "<< getPCtag(branch_pc,instShiftAmt) << " PC: " << branch_pc << " Branch instance "<< bi << std::endl;
+                // std::cerr << "bi->whLPTotal = "<<bi->whLPTotal << std::endl;
                     bi->whIdx = getSatIndex(pcIndex, bi);
                     // std::cerr << "satIndex:" << bi->whIdx << " satVal: " << whTable[pcIndex].SatCtrs[bi->whIdx] << " conf: " << whTable[pcIndex].conf<< std::endl;
                     // get prediction from saturating counter
@@ -198,15 +201,15 @@ WormholePredictor::UpdateRanking(ThreadID tid, Addr branch_pc, int lsum, int thr
 
         // std::cerr << "whTable size " << whTable.size() << " loopPrediction valid " << loopPredValid << std::endl;
         // if entry doesn't exist, push it to bottom of ranking
-        if (pcIndex == -1 && loopPredValid) { // Only allocate if it is inside a loop
+        if (pcIndex == -1 && loopPredValid && bi->whLPTotal >= 7) { // Only allocate if it is inside a loop
             if (whTable.size() == whtsize) {
                 // std::cerr << "wormhole entry deleted. wormhole size is " << whTable.size() << std::endl;
                 whTable.pop_back();
             }
 
             addworm_entry(branch_pc, instShiftAmt);
-          //  std::cerr << "\nwormhole entry added. wormhole entry size is " <<whTable.size() << std::endl;
-          //  std::cerr << "PCtag: "<< getPCtag(branch_pc,instShiftAmt) << " PC: " << branch_pc << " Branch instance "<< bi << std::endl;
+        //    std::cerr << "\nwormhole entry added. wormhole entry size is " <<whTable.size() << std::endl;
+        //    std::cerr << "PCtag: "<< getPCtag(branch_pc,instShiftAmt) << " PC: " << branch_pc << " Branch instance "<< bi << std::endl;
             
         }
     }
