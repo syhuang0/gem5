@@ -380,11 +380,9 @@ class WormholePredictor(SimObject):
     # Param.Int
     confMin = Param.Int(-8, "A saturating counter that tracks how well wormhole is predicting the corresponding branch")
     confMax = Param.Int(7, "A saturating counter that tracks how well wormhole is predicting the corresponding branch")
-    SatCtrMin = Param.Int(-8, "A table of counters that provide the direction prediction.")
-    SatCtrMax = Param.Int(7, "A table of counters that provide the direction prediction.")
-    SatCtrWidth = Param.Unsigned(4, "The width of each entry in the Saturating Counter")
+    SatCtrWidth = Param.Unsigned(5, "The width of each entry in the Saturating Counter")
     HistoryVectorSize = Param.Unsigned(101, "the local history size of the branch" )
-    SatCtrThres = Param.Unsigned(8, "Saturating counter threshold for a prediction")
+    SatCtrThres = Param.Unsigned(16, "Saturating counter threshold for a prediction")
     SatCtrSize = Param.Unsigned(16, "saturating counter width")
     whtsize = Param.Unsigned(5, "the size of the wormhole table")
     stats_threshold = Param.Unsigned(2, "stat correlator threshold for allocating an entry in wormhole table")
