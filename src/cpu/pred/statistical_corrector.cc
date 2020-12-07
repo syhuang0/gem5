@@ -393,22 +393,14 @@ StatisticalCorrector::condBranchUpdate(ThreadID tid, Addr branch_pc,
 void
 StatisticalCorrector::updateStats(bool taken, BranchInfo *bi)
 {
+  if(bi->usedScPred){
     if (taken == bi->scPred) {
         scPredictorCorrect++;
     } else {
         scPredictorWrong++;
     }
-
-    // if (bi->usedWhPred)
-    //   {
-    //     if (taken == bi->whPred) {
-    //         whPredictorCorrect++;
-    //       } else {
-    //         whPredictorWrong++;
-    //       }
-    //   }
-
-
+  }
+    
 
 }
 

@@ -54,7 +54,8 @@ class WormholePredictor : public SimObject
             // variables for propagating prediction info to the update function
             bool whPred;
             unsigned int whIdx;
-            BranchInfo(): whLPTotal(0), usedWhPred(false), whPred(false), whIdx(0) {}
+            bool whPrevPred;
+            BranchInfo(): whLPTotal(0), usedWhPred(false), whPred(false), whIdx(0), whPrevPred(false) {}
             
         };
 
@@ -62,7 +63,7 @@ class WormholePredictor : public SimObject
 
         bool WhPredict(
         ThreadID tid, Addr branch_pc, bool cond_branch,
-        BranchInfo* bi, bool prev_pred_taken, unsigned instShiftAmt);
+        BranchInfo* bi, bool prev_pred_taken, unsigned int instShiftAmt);
 
         void condBranchUpdate(ThreadID tid, Addr branch_pc, bool taken,
                                  bool tage_pred, BranchInfo* bi, int lsum, bool loopPredValid,
@@ -77,19 +78,32 @@ class WormholePredictor : public SimObject
         const int confMin;
         const int confMax;
         const unsigned HistoryVectorSize;
-        const int SatCtrMin;
-        const int SatCtrMax;
+        const unsigned SatCtrWidth;
         const unsigned SatCtrThres;
         const unsigned SatCtrSize;
         const unsigned whtsize;
         const unsigned stats_threshold; 
+
+        template<typename T>
+        inline void ctrUpdate(T & ctr, bool taken, int nbits) {
+            assert(nbits <= sizeof(T) << 3);
+            if (nbits > 0) {
+                if (taken) {
+                    if (ctr < ((1 << (nbits - 1)) - 1))
+                        ctr++;
+                } else {
+                    if (ctr > -(1 << (nbits - 1)))
+                        ctr--;
+                }
+            }
+        }
 
         // entry in the multi dimensional table
         struct WhEntry {
 
             uint64_t PCtag; // N-bit tag of PC 
             int conf; // N-bit condidence
-            std::vector<bool> localhist; // local history bits
+            std::deque<bool> localhist; // local history bits
             std::vector<int> SatCtrs; // N-bit saturating counters
             WhEntry(): PCtag(0), conf(0) {}
         };
@@ -99,7 +113,9 @@ class WormholePredictor : public SimObject
             return PC;
         }
 
+        int pctagsearch(Addr branch_pc, unsigned int instShiftAmt);
         unsigned int getSatIndex(int pcIndex, BranchInfo* bi);
+        void addworm_entry(Addr branch_pc, unsigned int instShiftAmt);
         
         std::vector<WhEntry> whTable;
 
@@ -123,7 +139,6 @@ class WormholePredictor : public SimObject
         void updatePrediction(Addr pc, bool Taken, BranchInfo* bi, bool tage_pred);
         void UpdateRanking(ThreadID tid, Addr branch_pc,int lsum, bool loopPredValid, unsigned int instShiftAmt);
         void updateConf(BranchInfo* bi, int entry,  bool taken, bool tage_pred);
-        void updateSatCtrs(BranchInfo* bi, int entry,  bool taken);
         void updatehistorybits(BranchInfo* bi, int entry,  bool taken );
 
 };  

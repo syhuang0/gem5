@@ -316,11 +316,14 @@ LoopPredictor::squashLoop(BranchInfo* bi)
 void
 LoopPredictor::updateStats(bool taken, BranchInfo* bi)
 {
-    if (taken == bi->loopPred) {
-        loopPredictorCorrect++;
-    } else {
-        loopPredictorWrong++;
+    if(bi->loopPredUsed){
+        if (taken == bi->loopPred) {
+            loopPredictorCorrect++;
+        } else {
+            loopPredictorWrong++;
+        }
     }
+    
 }
 
 void

@@ -4,27 +4,19 @@ int main()
         int sum=0;
 	for(i=0;i<a;i++)
 	{
+
 		for(j=0;j<b;j++)
 		{
 	
-			sum++;
-			sum++;
-			sum++;
-			sum++;
-			sum++;
-			if ((i*j)%11 > 5 )
+	
+			if ((i*j)%11 > 5*(j/(i+1)) )
 			{
 				sum--;
-				sum--;
-				sum--;
+				int k =2;
+				k-=3;
 				sum--;
 		
 			}
-			sum++;
-			sum++;
-			sum++;
-			sum++;
-			sum++;
 			sum++;
 			sum++;
 			sum++;

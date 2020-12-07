@@ -45,7 +45,6 @@
 
 #include "cpu/pred/ltage.hh"
 #include "cpu/pred/statistical_corrector.hh"
-#include "cpu/pred/wormhole_predictor.hh"
 #include "params/TAGE_SC_L.hh"
 #include "params/TAGE_SC_L_LoopPredictor.hh"
 #include "params/TAGE_SC_L_TAGE.hh"
@@ -148,9 +147,8 @@ class TAGE_SC_L_LoopPredictor : public LoopPredictor
 
 class TAGE_SC_L: public LTAGE
 {
-    StatisticalCorrector *statisticalCorrector;
-    WormholePredictor *wormholepredictor;
-
+    protected:
+        StatisticalCorrector *statisticalCorrector;
   public:
     TAGE_SC_L(const TAGE_SC_LParams *params);
 
@@ -168,27 +166,23 @@ class TAGE_SC_L: public LTAGE
     struct TageSCLBranchInfo : public LTageBranchInfo
     {
         StatisticalCorrector::BranchInfo *scBranchInfo;
-        WormholePredictor::BranchInfo *whBranchInfo;
 
         TageSCLBranchInfo(TAGEBase &tage, StatisticalCorrector &sc,
-                          LoopPredictor &lp, WormholePredictor & wh)
-          : LTageBranchInfo(tage, lp), scBranchInfo(sc.makeBranchInfo()), whBranchInfo(wh.makeBranchInfo())
+                          LoopPredictor &lp)
+          : LTageBranchInfo(tage, lp), scBranchInfo(sc.makeBranchInfo())
         {}
 
         virtual ~TageSCLBranchInfo()
         {
             delete scBranchInfo;
-            delete whBranchInfo;
         }
     };
 
     // more provider types
     enum {
-        SC = LAST_LTAGE_PROVIDER_TYPE + 1,
-        WH = LAST_LTAGE_PROVIDER_TYPE + 2
+        SC = LAST_LTAGE_PROVIDER_TYPE + 1
     };
 
 };
 
 #endif // __CPU_PRED_TAGE_SC_L
-

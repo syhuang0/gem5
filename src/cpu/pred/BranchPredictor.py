@@ -382,6 +382,7 @@ class WormholePredictor(SimObject):
     confMax = Param.Int(4, "A saturating counter that tracks how well wormhole is predicting the corresponding branch")
     SatCtrMin = Param.Int(-8, "A table of counters that provide the direction prediction.")
     SatCtrMax = Param.Int(7, "A table of counters that provide the direction prediction.")
+    SatCtrWidth = Param.Unsigned(4, "The width of each entry in the Saturating Counter")
     HistoryVectorSize = Param.Unsigned(101, "the local history size of the branch" )
     SatCtrThres = Param.Unsigned(8, "Saturating counter threshold for a prediction")
     SatCtrSize = Param.Unsigned(16, "saturating counter width")
@@ -408,7 +409,6 @@ class TAGE_SC_L(LTAGE):
 
     statistical_corrector = Param.StatisticalCorrector(
         "Statistical Corrector")
-    wormholepredictor = Param.WormholePredictor("Wormhole Predictor")
 
 class TAGE_SC_L_64KB_LoopPredictor(TAGE_SC_L_LoopPredictor):
     logSizeLoopPred = 5
@@ -497,7 +497,6 @@ class TAGE_SC_L_64KB(TAGE_SC_L):
     tage = TAGE_SC_L_TAGE_64KB()
     loop_predictor = TAGE_SC_L_64KB_LoopPredictor()
     statistical_corrector = TAGE_SC_L_64KB_StatisticalCorrector()
-    wormholepredictor = WormholePredictor()
 
 # 8KB TAGE-SC-L branch predictor as described in
 # http://www.jilp.org/cbp2016/paper/AndreSeznecLimited.pdf
@@ -509,7 +508,17 @@ class TAGE_SC_L_8KB(TAGE_SC_L):
     tage = TAGE_SC_L_TAGE_8KB()
     loop_predictor = TAGE_SC_L_8KB_LoopPredictor()
     statistical_corrector = TAGE_SC_L_8KB_StatisticalCorrector()
-    wormholepredictor = WormholePredictor()
+
+class WISL_TAGE(TAGE_SC_L):
+    type = 'WISL_TAGE'
+    cxx_class = 'WISL_TAGE'
+    cxx_header = "cpu/pred/wisl_tage.hh"
+    
+    tage = TAGE_SC_L_TAGE_8KB()
+    loop_predictor = TAGE_SC_L_8KB_LoopPredictor()
+    statistical_corrector = TAGE_SC_L_8KB_StatisticalCorrector()
+    wormholepredictor = Param.WormholePredictor(WormholePredictor(), "Wormhole object")
+    # (TAGEBase(), "Tage object")
 
 class MultiperspectivePerceptron(BranchPredictor):
     type = 'MultiperspectivePerceptron'
