@@ -1,0 +1,7 @@
+INFO: spec_main_live_pretend.c(120): Processing 24 beamsets
+INFO: cmd_ln.c(276): Parsing command line:
+INFO: kbcore.c(95): Initializing core models:
+INFO: logs3.c(99): Initializing logbase: 1.000300e+00 (add table: 1)
+INFO: logs3.c(161): Log-Add table size = 29350
+INFO: feat.c(642): Initializing feature stream to type: '1s_c_d_dd', CMN='current', VARNORM='no', AGC='none'
+INFO: mdef.c(594): Reading model definition: model/hmm/hub4/hub4opensrc.6000.mdef
