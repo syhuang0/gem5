@@ -21,7 +21,7 @@ vector<int> seidal (vector<vector<int>> & a, vector<int> & x, vector<int>&b)
 
 int main (int argc, char* argv[])
 {
-    int n = 25;
+    int n = 15;
     vector<int> x(n, 0);
     std::random_device rd; std::mt19937 gen(rd());
     std::uniform_real_distribution<> dis(1, 2);

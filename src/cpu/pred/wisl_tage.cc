@@ -107,7 +107,7 @@ WISL_TAGE::predict(ThreadID tid, Addr branch_pc, bool cond_branch, void* &b)
 
     if(bi->lpBranchInfo->loopPredValid){ // if loop hit, record number of iterations in loop
         bi->whBranchInfo->whLPTotal = loopPredictor->getLptotal(bi->lpBranchInfo);
-        if(abs(bi->scBranchInfo->lsum)/2 < (bi->scBranchInfo->thres*4)){
+        if(abs(bi->scBranchInfo->lsum) < (bi->scBranchInfo->thres*4)){
             // std:: cerr << "\nPC: " << branch_pc << " Branch instance: " << bi->whBranchInfo;
             // std::cerr << "\nis inside loop" << " loop total: " << loopPredictor->getLptotal(bi->lpBranchInfo);
             // std:: cerr << " lsum: " << bi->scBranchInfo->lsum << " threshold: "<< bi->scBranchInfo->thres << "\n";

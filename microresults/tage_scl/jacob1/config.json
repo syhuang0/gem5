@@ -76,7 +76,7 @@
                 "app_path": "/proc", 
                 "name": "redirect_paths0", 
                 "host_paths": [
-                    "microresults/tage_scl/jacob1/fs/proc"
+                    "microresults/tage_scl/jacob1//fs/proc"
                 ], 
                 "eventq_index": 0, 
                 "cxx_class": "RedirectPath", 
@@ -87,7 +87,7 @@
                 "app_path": "/sys", 
                 "name": "redirect_paths1", 
                 "host_paths": [
-                    "microresults/tage_scl/jacob1/fs/sys"
+                    "microresults/tage_scl/jacob1//fs/sys"
                 ], 
                 "eventq_index": 0, 
                 "cxx_class": "RedirectPath", 
@@ -98,7 +98,7 @@
                 "app_path": "/tmp", 
                 "name": "redirect_paths2", 
                 "host_paths": [
-                    "microresults/tage_scl/jacob1/fs/tmp"
+                    "microresults/tage_scl/jacob1//fs/tmp"
                 ], 
                 "eventq_index": 0, 
                 "cxx_class": "RedirectPath", 
