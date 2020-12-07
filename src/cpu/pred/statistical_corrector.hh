@@ -190,8 +190,6 @@ class StatisticalCorrector : public SimObject
     Stats::Scalar scPredictorCorrect;
     Stats::Scalar scPredictorWrong;
 
-    Stats::Scalar whPredictorCorrect;
-    Stats::Scalar whPredictorWrong;
   public:
     struct BranchInfo
     {

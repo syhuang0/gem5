@@ -378,8 +378,8 @@ class WormholePredictor(SimObject):
 
     # wormhole predictor parameters
     # Param.Int
-    confMin = Param.Int(-11, "A saturating counter that tracks how well wormhole is predicting the corresponding branch")
-    confMax = Param.Int(4, "A saturating counter that tracks how well wormhole is predicting the corresponding branch")
+    confMin = Param.Int(-8, "A saturating counter that tracks how well wormhole is predicting the corresponding branch")
+    confMax = Param.Int(7, "A saturating counter that tracks how well wormhole is predicting the corresponding branch")
     SatCtrMin = Param.Int(-8, "A table of counters that provide the direction prediction.")
     SatCtrMax = Param.Int(7, "A table of counters that provide the direction prediction.")
     SatCtrWidth = Param.Unsigned(4, "The width of each entry in the Saturating Counter")

@@ -68,21 +68,14 @@ WISL_TAGE::predict(ThreadID tid, Addr branch_pc, bool cond_branch, void* &b)
                                             instShiftAmt);
 
     
-    if (bi->lpBranchInfo->numIter > 0){
+    // if (bi->lpBranchInfo->numIter > 0){
         // std::cerr<<"Wise Tage Prediciton\n";
-        // // std::cerr << "PC: "<< branch_pc;
+        // std::cerr << "PC: "<< branch_pc;
         //   std::cerr<<" .loop BranchInfo->numIter: " << bi->lpBranchInfo->numIter<< " Loop Valid: " <<bi->lpBranchInfo->loopPredValid<< std::endl;
 
-    }
+    // }
 
-    if(bi->lpBranchInfo->loopPredValid){ // if loop hit, record number of iterations in loop
-        bi->whBranchInfo->whLPTotal = 0;
-        if(bi->lpBranchInfo->numIter <= wormholepredictor->getHistorySize()){
-            bi->whBranchInfo->whLPTotal = bi->lpBranchInfo->numIter;
-            // // std::cerr << "wormhole branchinfo->whLPTotal: " << bi->whBranchInfo->whLPTotal << std::endl;
-        }
-        
-    }
+    
 
     if (bi->lpBranchInfo->loopPredUsed) {
         bi->tageBranchInfo->provider = LOOP;
@@ -112,9 +105,21 @@ WISL_TAGE::predict(ThreadID tid, Addr branch_pc, bool cond_branch, void* &b)
         bi->tageBranchInfo->provider = SC;
     }
 
-    //WH
-    pred_taken = statisticalCorrector-> whPredict(tid, branch_pc, cond_branch,
-        bi->scBranchInfo,pred_taken,bi->lpBranchInfo->numIter);
+    if(bi->lpBranchInfo->loopPredValid){ // if loop hit, record number of iterations in loop
+        bi->whBranchInfo->whLPTotal = loopPredictor->getLptotal(bi->lpBranchInfo);
+        if(abs(bi->scBranchInfo->lsum)/2 < (bi->scBranchInfo->thres*4)){
+            // std:: cerr << "\nPC: " << branch_pc << " Branch instance: " << bi->whBranchInfo;
+            // std::cerr << "\nis inside loop" << " loop total: " << loopPredictor->getLptotal(bi->lpBranchInfo);
+            // std:: cerr << " lsum: " << bi->scBranchInfo->lsum << " threshold: "<< bi->scBranchInfo->thres << "\n";
+        }
+        
+        if((loopPredictor->getLptotal(bi->lpBranchInfo)) <= wormholepredictor->getHistorySize()){
+            bi->whBranchInfo->whLPTotal = loopPredictor->getLptotal(bi->lpBranchInfo);
+             // std::cerr << "wormhole branchinfo->whLPTotal: " << bi->whBranchInfo->whLPTotal << std::endl;
+        }
+        
+    }
+
     pred_taken = wormholepredictor->WhPredict(tid, branch_pc, cond_branch, bi->whBranchInfo, pred_taken, instShiftAmt);
 
     if(bi->whBranchInfo->usedWhPred){
@@ -165,7 +170,7 @@ WISL_TAGE::update(ThreadID tid, Addr branch_pc, bool taken, void *bp_history,
         //                                bi->lpBranchInfo->numIter);
 
         wormholepredictor->condBranchUpdate(tid, branch_pc, taken,
-            bi->whBranchInfo->whPrevPred, bi->whBranchInfo, bi->scBranchInfo->lsum,
+            bi->whBranchInfo->whPrevPred, bi->whBranchInfo, bi->scBranchInfo->lsum,bi->scBranchInfo->thres,
             bi->lpBranchInfo->loopPredValid, instShiftAmt);
 
         bool bias = (bi->tageBranchInfo->longestMatchPred !=

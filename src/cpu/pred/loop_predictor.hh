@@ -131,15 +131,11 @@ class LoopPredictor : public SimObject
         int loopHit;
         bool predTaken;
 
-        //WH
-        uint16_t numIter;
-
         BranchInfo()
             : loopTag(0), currentIter(0),
               loopPred(false),
               loopPredValid(false), loopIndex(0), loopIndexB(0), loopHit(0),
-              predTaken(false),
-              numIter(0)
+              predTaken(false)
         {}
     };
 

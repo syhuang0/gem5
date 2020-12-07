@@ -1,2 +1,2 @@
 #!/bin/sh
-/usr/bin/arm-linux-gnueabi-gcc -O0 -static $1
+/usr/bin/arm-linux-gnueabi-g++ -O0 -static $1

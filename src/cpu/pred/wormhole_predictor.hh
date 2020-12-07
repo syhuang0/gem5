@@ -66,7 +66,7 @@ class WormholePredictor : public SimObject
         BranchInfo* bi, bool prev_pred_taken, unsigned int instShiftAmt);
 
         void condBranchUpdate(ThreadID tid, Addr branch_pc, bool taken,
-                                 bool tage_pred, BranchInfo* bi, int lsum, bool loopPredValid,
+                                 bool tage_pred, BranchInfo* bi, int lsum, int thres, bool loopPredValid,
                                  unsigned instShiftAmt);
 
         void updateStats(bool taken, BranchInfo *bi);
@@ -137,7 +137,7 @@ class WormholePredictor : public SimObject
 
     protected:
         void updatePrediction(Addr pc, bool Taken, BranchInfo* bi, bool tage_pred);
-        void UpdateRanking(ThreadID tid, Addr branch_pc,int lsum, bool loopPredValid, unsigned int instShiftAmt);
+        void UpdateRanking(ThreadID tid, Addr branch_pc, int lsum, int thres, bool loopPredValid, unsigned int instShiftAmt, BranchInfo* bi);
         void updateConf(BranchInfo* bi, int entry,  bool taken, bool tage_pred);
         void updatehistorybits(BranchInfo* bi, int entry,  bool taken );
 

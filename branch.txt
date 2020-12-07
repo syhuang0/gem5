@@ -6,3 +6,1354 @@ warn: DRAM device capacity (8192 Mbytes) does not match the address range assign
 0: system.remote_gdb: listening for remote gdb on port 7000
 info: Entering event queue @ 0.  Starting simulation...
 info: Increasing stack size by one page.
+
+wormhole entry added. wormhole entry size is 1
+PCtag: 16587 PC: 66348 Branch instance 0x55d6d1216250
+
+WormHole Prediction
+PCtag: 16587 PC: 66348 Branch instance: 0x55d6d1216590
+bi->whLPTotal = 50
+Prior prediction: 0 wh prediction: 1
+Sat Index: 4 Sat Value: 4 conf: 0
+
+Conditional branch update
+PCtag: 16587 PC: 66348 Branch instance: 0x55d6d1216590
+Update taken: LPtotal 50
+Outcome: 1 Prior prediction: 0 wh prediction: 1
+Sat Index: 4 Sat Value: 4 conf: 0
+
+Update Confindence
+Branch instance: 0x55d6d1216590
+Outcome: 1 wormhole prediction: 1 tage prediction: 0
+Confidence after: 1
+
+WormHole Prediction
+PCtag: 16587 PC: 66348 Branch instance: 0x55d6d12163c0
+bi->whLPTotal = 50
+Prior prediction: 0 wh prediction: 1
+Sat Index: 4 Sat Value: 7 conf: 0
+
+Conditional branch update
+PCtag: 16587 PC: 66348 Branch instance: 0x55d6d12163c0
+Update taken: LPtotal 50
+Outcome: 0 Prior prediction: 0 wh prediction: 1
+Sat Index: 4 Sat Value: 7 conf: 0
+
+Update Confindence
+Branch instance: 0x55d6d12163c0
+Outcome: 0 wormhole prediction: 1 tage prediction: 0
+Confidence after: -1
+
+WormHole Prediction
+PCtag: 16587 PC: 66348 Branch instance: 0x55d6d12167a0
+bi->whLPTotal = 50
+Prior prediction: 0 wh prediction: 1
+Sat Index: 4 Sat Value: 7 conf: 0
+
+Conditional branch update
+PCtag: 16587 PC: 66348 Branch instance: 0x55d6d12167a0
+Update taken: LPtotal 50
+Outcome: 0 Prior prediction: 0 wh prediction: 1
+Sat Index: 4 Sat Value: 7 conf: 0
+
+Update Confindence
+Branch instance: 0x55d6d12167a0
+Outcome: 0 wormhole prediction: 1 tage prediction: 0
+Confidence after: -1
+
+WormHole Prediction
+PCtag: 16587 PC: 66348 Branch instance: 0x55d6d1216440
+bi->whLPTotal = 50
+Prior prediction: 0 wh prediction: 1
+Sat Index: 4 Sat Value: 7 conf: 0
+
+Conditional branch update
+PCtag: 16587 PC: 66348 Branch instance: 0x55d6d1216440
+Update taken: LPtotal 50
+Outcome: 0 Prior prediction: 0 wh prediction: 1
+Sat Index: 4 Sat Value: 7 conf: 0
+
+Update Confindence
+Branch instance: 0x55d6d1216440
+Outcome: 0 wormhole prediction: 1 tage prediction: 0
+Confidence after: -1
+
+WormHole Prediction
+PCtag: 16587 PC: 66348 Branch instance: 0x55d6d1216120
+bi->whLPTotal = 50
+Prior prediction: 0 wh prediction: 1
+Sat Index: 4 Sat Value: 7 conf: 0
+
+Conditional branch update
+PCtag: 16587 PC: 66348 Branch instance: 0x55d6d1216120
+Update taken: LPtotal 50
+Outcome: 0 Prior prediction: 0 wh prediction: 1
+Sat Index: 4 Sat Value: 7 conf: 0
+
+Update Confindence
+Branch instance: 0x55d6d1216120
+Outcome: 0 wormhole prediction: 1 tage prediction: 0
+Confidence after: -1
+
+WormHole Prediction
+PCtag: 16587 PC: 66348 Branch instance: 0x55d6d12162f0
+bi->whLPTotal = 50
+Prior prediction: 0 wh prediction: 1
+Sat Index: 4 Sat Value: 7 conf: 0
+
+Conditional branch update
+PCtag: 16587 PC: 66348 Branch instance: 0x55d6d12162f0
+Update taken: LPtotal 50
+Outcome: 0 Prior prediction: 0 wh prediction: 1
+Sat Index: 4 Sat Value: 7 conf: 0
+
+Update Confindence
+Branch instance: 0x55d6d12162f0
+Outcome: 0 wormhole prediction: 1 tage prediction: 0
+Confidence after: -1
+
+WormHole Prediction
+PCtag: 16587 PC: 66348 Branch instance: 0x55d6d1216a10
+bi->whLPTotal = 50
+Prior prediction: 0 wh prediction: 1
+Sat Index: 4 Sat Value: 7 conf: 0
+
+Conditional branch update
+PCtag: 16587 PC: 66348 Branch instance: 0x55d6d1216a10
+Update taken: LPtotal 50
+Outcome: 0 Prior prediction: 0 wh prediction: 1
+Sat Index: 4 Sat Value: 7 conf: 0
+
+Update Confindence
+Branch instance: 0x55d6d1216a10
+Outcome: 0 wormhole prediction: 1 tage prediction: 0
+Confidence after: -1
+
+WormHole Prediction
+PCtag: 16587 PC: 66348 Branch instance: 0x55d6d1216790
+bi->whLPTotal = 50
+Prior prediction: 0 wh prediction: 1
+Sat Index: 4 Sat Value: 7 conf: 0
+
+Conditional branch update
+PCtag: 16587 PC: 66348 Branch instance: 0x55d6d1216790
+Update taken: LPtotal 50
+Outcome: 0 Prior prediction: 0 wh prediction: 1
+Sat Index: 4 Sat Value: 7 conf: 0
+
+Update Confindence
+Branch instance: 0x55d6d1216790
+Outcome: 0 wormhole prediction: 1 tage prediction: 0
+Confidence after: -1
+
+WormHole Prediction
+PCtag: 16587 PC: 66348 Branch instance: 0x55d6d12161f0
+bi->whLPTotal = 50
+Prior prediction: 0 wh prediction: 1
+Sat Index: 4 Sat Value: 7 conf: 0
+
+Conditional branch update
+PCtag: 16587 PC: 66348 Branch instance: 0x55d6d12161f0
+Update taken: LPtotal 50
+Outcome: 0 Prior prediction: 0 wh prediction: 1
+Sat Index: 4 Sat Value: 7 conf: 0
+
+Update Confindence
+Branch instance: 0x55d6d12161f0
+Outcome: 0 wormhole prediction: 1 tage prediction: 0
+Confidence after: -1
+
+WormHole Prediction
+PCtag: 16587 PC: 66348 Branch instance: 0x55d6d12163c0
+bi->whLPTotal = 50
+Prior prediction: 0 wh prediction: 1
+Sat Index: 4 Sat Value: 7 conf: 0
+
+Conditional branch update
+PCtag: 16587 PC: 66348 Branch instance: 0x55d6d12163c0
+Update taken: LPtotal 50
+Outcome: 0 Prior prediction: 0 wh prediction: 1
+Sat Index: 4 Sat Value: 7 conf: 0
+
+Update Confindence
+Branch instance: 0x55d6d12163c0
+Outcome: 0 wormhole prediction: 1 tage prediction: 0
+Confidence after: -1
+
+WormHole Prediction
+PCtag: 16587 PC: 66348 Branch instance: 0x55d6d12164b0
+bi->whLPTotal = 50
+Prior prediction: 0 wh prediction: 1
+Sat Index: 4 Sat Value: 7 conf: 0
+
+Conditional branch update
+PCtag: 16587 PC: 66348 Branch instance: 0x55d6d12164b0
+Update taken: LPtotal 50
+Outcome: 0 Prior prediction: 0 wh prediction: 1
+Sat Index: 4 Sat Value: 7 conf: 0
+
+Update Confindence
+Branch instance: 0x55d6d12164b0
+Outcome: 0 wormhole prediction: 1 tage prediction: 0
+Confidence after: -1
+
+WormHole Prediction
+PCtag: 16587 PC: 66348 Branch instance: 0x55d6d1216930
+bi->whLPTotal = 50
+Prior prediction: 0 wh prediction: 1
+Sat Index: 4 Sat Value: 7 conf: 0
+
+Conditional branch update
+PCtag: 16587 PC: 66348 Branch instance: 0x55d6d1216930
+Update taken: LPtotal 50
+Outcome: 0 Prior prediction: 0 wh prediction: 1
+Sat Index: 4 Sat Value: 7 conf: 0
+
+Update Confindence
+Branch instance: 0x55d6d1216930
+Outcome: 0 wormhole prediction: 1 tage prediction: 0
+Confidence after: -1
+
+WormHole Prediction
+PCtag: 16587 PC: 66348 Branch instance: 0x55d6d12163b0
+bi->whLPTotal = 50
+Prior prediction: 0 wh prediction: 1
+Sat Index: 4 Sat Value: 7 conf: 0
+
+Conditional branch update
+PCtag: 16587 PC: 66348 Branch instance: 0x55d6d12163b0
+Update taken: LPtotal 50
+Outcome: 0 Prior prediction: 0 wh prediction: 1
+Sat Index: 4 Sat Value: 7 conf: 0
+
+Update Confindence
+Branch instance: 0x55d6d12163b0
+Outcome: 0 wormhole prediction: 1 tage prediction: 0
+Confidence after: -1
+
+WormHole Prediction
+PCtag: 16587 PC: 66348 Branch instance: 0x55d6d1216890
+bi->whLPTotal = 50
+Prior prediction: 0 wh prediction: 1
+Sat Index: 4 Sat Value: 7 conf: 0
+
+Conditional branch update
+PCtag: 16587 PC: 66348 Branch instance: 0x55d6d1216890
+Update taken: LPtotal 50
+Outcome: 0 Prior prediction: 0 wh prediction: 1
+Sat Index: 4 Sat Value: 7 conf: 0
+
+Update Confindence
+Branch instance: 0x55d6d1216890
+Outcome: 0 wormhole prediction: 1 tage prediction: 0
+Confidence after: -1
+
+WormHole Prediction
+PCtag: 16587 PC: 66348 Branch instance: 0x55d6d1216600
+bi->whLPTotal = 50
+Prior prediction: 0 wh prediction: 1
+Sat Index: 4 Sat Value: 7 conf: 0
+
+Conditional branch update
+PCtag: 16587 PC: 66348 Branch instance: 0x55d6d1216600
+Update taken: LPtotal 50
+Outcome: 0 Prior prediction: 0 wh prediction: 1
+Sat Index: 4 Sat Value: 7 conf: 0
+
+Update Confindence
+Branch instance: 0x55d6d1216600
+Outcome: 0 wormhole prediction: 1 tage prediction: 0
+Confidence after: -1
+
+WormHole Prediction
+PCtag: 16587 PC: 66348 Branch instance: 0x55d6d1216510
+bi->whLPTotal = 50
+Prior prediction: 0 wh prediction: 1
+Sat Index: 4 Sat Value: 7 conf: 0
+
+Conditional branch update
+PCtag: 16587 PC: 66348 Branch instance: 0x55d6d1216510
+Update taken: LPtotal 50
+Outcome: 0 Prior prediction: 0 wh prediction: 1
+Sat Index: 4 Sat Value: 7 conf: 0
+
+Update Confindence
+Branch instance: 0x55d6d1216510
+Outcome: 0 wormhole prediction: 1 tage prediction: 0
+Confidence after: -1
+
+WormHole Prediction
+PCtag: 16587 PC: 66348 Branch instance: 0x55d6d1216150
+bi->whLPTotal = 50
+Prior prediction: 0 wh prediction: 1
+Sat Index: 4 Sat Value: 7 conf: 0
+
+Conditional branch update
+PCtag: 16587 PC: 66348 Branch instance: 0x55d6d1216150
+Update taken: LPtotal 50
+Outcome: 0 Prior prediction: 0 wh prediction: 1
+Sat Index: 4 Sat Value: 7 conf: 0
+
+Update Confindence
+Branch instance: 0x55d6d1216150
+Outcome: 0 wormhole prediction: 1 tage prediction: 0
+Confidence after: -1
+
+WormHole Prediction
+PCtag: 16587 PC: 66348 Branch instance: 0x55d6d1216100
+bi->whLPTotal = 50
+Prior prediction: 0 wh prediction: 1
+Sat Index: 4 Sat Value: 7 conf: 0
+
+Conditional branch update
+PCtag: 16587 PC: 66348 Branch instance: 0x55d6d1216100
+Update taken: LPtotal 50
+Outcome: 0 Prior prediction: 0 wh prediction: 1
+Sat Index: 4 Sat Value: 7 conf: 0
+
+Update Confindence
+Branch instance: 0x55d6d1216100
+Outcome: 0 wormhole prediction: 1 tage prediction: 0
+Confidence after: -1
+
+WormHole Prediction
+PCtag: 16587 PC: 66348 Branch instance: 0x55d6d1216720
+bi->whLPTotal = 50
+Prior prediction: 0 wh prediction: 1
+Sat Index: 4 Sat Value: 7 conf: 0
+
+Conditional branch update
+PCtag: 16587 PC: 66348 Branch instance: 0x55d6d1216720
+Update taken: LPtotal 50
+Outcome: 0 Prior prediction: 0 wh prediction: 1
+Sat Index: 4 Sat Value: 7 conf: 0
+
+Update Confindence
+Branch instance: 0x55d6d1216720
+Outcome: 0 wormhole prediction: 1 tage prediction: 0
+Confidence after: -1
+
+WormHole Prediction
+PCtag: 16587 PC: 66348 Branch instance: 0x55d6d12167a0
+bi->whLPTotal = 50
+Prior prediction: 0 wh prediction: 1
+Sat Index: 4 Sat Value: 7 conf: 0
+
+Conditional branch update
+PCtag: 16587 PC: 66348 Branch instance: 0x55d6d12167a0
+Update taken: LPtotal 50
+Outcome: 0 Prior prediction: 0 wh prediction: 1
+Sat Index: 4 Sat Value: 7 conf: 0
+
+Update Confindence
+Branch instance: 0x55d6d12167a0
+Outcome: 0 wormhole prediction: 1 tage prediction: 0
+Confidence after: -1
+
+WormHole Prediction
+PCtag: 16587 PC: 66348 Branch instance: 0x55d6d1216440
+bi->whLPTotal = 50
+Prior prediction: 0 wh prediction: 1
+Sat Index: 4 Sat Value: 7 conf: 0
+
+Conditional branch update
+PCtag: 16587 PC: 66348 Branch instance: 0x55d6d1216440
+Update taken: LPtotal 50
+Outcome: 0 Prior prediction: 0 wh prediction: 1
+Sat Index: 4 Sat Value: 7 conf: 0
+
+Update Confindence
+Branch instance: 0x55d6d1216440
+Outcome: 0 wormhole prediction: 1 tage prediction: 0
+Confidence after: -1
+
+WormHole Prediction
+PCtag: 16587 PC: 66348 Branch instance: 0x55d6d1216120
+bi->whLPTotal = 50
+Prior prediction: 0 wh prediction: 1
+Sat Index: 4 Sat Value: 7 conf: 0
+
+Conditional branch update
+PCtag: 16587 PC: 66348 Branch instance: 0x55d6d1216120
+Update taken: LPtotal 50
+Outcome: 0 Prior prediction: 0 wh prediction: 1
+Sat Index: 4 Sat Value: 7 conf: 0
+
+Update Confindence
+Branch instance: 0x55d6d1216120
+Outcome: 0 wormhole prediction: 1 tage prediction: 0
+Confidence after: -1
+
+WormHole Prediction
+PCtag: 16587 PC: 66348 Branch instance: 0x55d6d12162f0
+bi->whLPTotal = 50
+Prior prediction: 0 wh prediction: 1
+Sat Index: 4 Sat Value: 7 conf: 0
+
+Conditional branch update
+PCtag: 16587 PC: 66348 Branch instance: 0x55d6d12162f0
+Update taken: LPtotal 50
+Outcome: 0 Prior prediction: 0 wh prediction: 1
+Sat Index: 4 Sat Value: 7 conf: 0
+
+Update Confindence
+Branch instance: 0x55d6d12162f0
+Outcome: 0 wormhole prediction: 1 tage prediction: 0
+Confidence after: -1
+
+WormHole Prediction
+PCtag: 16587 PC: 66348 Branch instance: 0x55d6d1216a10
+bi->whLPTotal = 50
+Prior prediction: 0 wh prediction: 1
+Sat Index: 4 Sat Value: 7 conf: 0
+
+Conditional branch update
+PCtag: 16587 PC: 66348 Branch instance: 0x55d6d1216a10
+Update taken: LPtotal 50
+Outcome: 0 Prior prediction: 0 wh prediction: 1
+Sat Index: 4 Sat Value: 7 conf: 0
+
+Update Confindence
+Branch instance: 0x55d6d1216a10
+Outcome: 0 wormhole prediction: 1 tage prediction: 0
+Confidence after: -1
+
+WormHole Prediction
+PCtag: 16587 PC: 66348 Branch instance: 0x55d6d1216790
+bi->whLPTotal = 50
+Prior prediction: 0 wh prediction: 1
+Sat Index: 4 Sat Value: 7 conf: 0
+
+Conditional branch update
+PCtag: 16587 PC: 66348 Branch instance: 0x55d6d1216790
+Update taken: LPtotal 50
+Outcome: 0 Prior prediction: 0 wh prediction: 1
+Sat Index: 4 Sat Value: 7 conf: 0
+
+Update Confindence
+Branch instance: 0x55d6d1216790
+Outcome: 0 wormhole prediction: 1 tage prediction: 0
+Confidence after: -1
+
+WormHole Prediction
+PCtag: 16587 PC: 66348 Branch instance: 0x55d6d12161f0
+bi->whLPTotal = 50
+Prior prediction: 0 wh prediction: 1
+Sat Index: 4 Sat Value: 7 conf: 0
+
+Conditional branch update
+PCtag: 16587 PC: 66348 Branch instance: 0x55d6d12161f0
+Update taken: LPtotal 50
+Outcome: 0 Prior prediction: 0 wh prediction: 1
+Sat Index: 4 Sat Value: 7 conf: 0
+
+Update Confindence
+Branch instance: 0x55d6d12161f0
+Outcome: 0 wormhole prediction: 1 tage prediction: 0
+Confidence after: -1
+
+WormHole Prediction
+PCtag: 16587 PC: 66348 Branch instance: 0x55d6d12163c0
+bi->whLPTotal = 50
+Prior prediction: 0 wh prediction: 1
+Sat Index: 4 Sat Value: 7 conf: 0
+
+Conditional branch update
+PCtag: 16587 PC: 66348 Branch instance: 0x55d6d12163c0
+Update taken: LPtotal 50
+Outcome: 0 Prior prediction: 0 wh prediction: 1
+Sat Index: 4 Sat Value: 7 conf: 0
+
+Update Confindence
+Branch instance: 0x55d6d12163c0
+Outcome: 0 wormhole prediction: 1 tage prediction: 0
+Confidence after: -1
+
+WormHole Prediction
+PCtag: 16587 PC: 66348 Branch instance: 0x55d6d12164b0
+bi->whLPTotal = 50
+Prior prediction: 0 wh prediction: 1
+Sat Index: 4 Sat Value: 7 conf: 0
+
+Conditional branch update
+PCtag: 16587 PC: 66348 Branch instance: 0x55d6d12164b0
+Update taken: LPtotal 50
+Outcome: 0 Prior prediction: 0 wh prediction: 1
+Sat Index: 4 Sat Value: 7 conf: 0
+
+Update Confindence
+Branch instance: 0x55d6d12164b0
+Outcome: 0 wormhole prediction: 1 tage prediction: 0
+Confidence after: -1
+
+WormHole Prediction
+PCtag: 16587 PC: 66348 Branch instance: 0x55d6d1216930
+bi->whLPTotal = 50
+Prior prediction: 0 wh prediction: 1
+Sat Index: 4 Sat Value: 7 conf: 0
+
+Conditional branch update
+PCtag: 16587 PC: 66348 Branch instance: 0x55d6d1216930
+Update taken: LPtotal 50
+Outcome: 0 Prior prediction: 0 wh prediction: 1
+Sat Index: 4 Sat Value: 7 conf: 0
+
+Update Confindence
+Branch instance: 0x55d6d1216930
+Outcome: 0 wormhole prediction: 1 tage prediction: 0
+Confidence after: -1
+
+WormHole Prediction
+PCtag: 16587 PC: 66348 Branch instance: 0x55d6d12163b0
+bi->whLPTotal = 50
+Prior prediction: 0 wh prediction: 1
+Sat Index: 4 Sat Value: 7 conf: 0
+
+Conditional branch update
+PCtag: 16587 PC: 66348 Branch instance: 0x55d6d12163b0
+Update taken: LPtotal 50
+Outcome: 0 Prior prediction: 0 wh prediction: 1
+Sat Index: 4 Sat Value: 7 conf: 0
+
+Update Confindence
+Branch instance: 0x55d6d12163b0
+Outcome: 0 wormhole prediction: 1 tage prediction: 0
+Confidence after: -1
+
+WormHole Prediction
+PCtag: 16587 PC: 66348 Branch instance: 0x55d6d1216890
+bi->whLPTotal = 50
+Prior prediction: 0 wh prediction: 1
+Sat Index: 4 Sat Value: 7 conf: 0
+
+Conditional branch update
+PCtag: 16587 PC: 66348 Branch instance: 0x55d6d1216890
+Update taken: LPtotal 50
+Outcome: 0 Prior prediction: 0 wh prediction: 1
+Sat Index: 4 Sat Value: 7 conf: 0
+
+Update Confindence
+Branch instance: 0x55d6d1216890
+Outcome: 0 wormhole prediction: 1 tage prediction: 0
+Confidence after: -1
+
+WormHole Prediction
+PCtag: 16587 PC: 66348 Branch instance: 0x55d6d1216600
+bi->whLPTotal = 50
+Prior prediction: 0 wh prediction: 1
+Sat Index: 4 Sat Value: 7 conf: 0
+
+Conditional branch update
+PCtag: 16587 PC: 66348 Branch instance: 0x55d6d1216600
+Update taken: LPtotal 50
+Outcome: 0 Prior prediction: 0 wh prediction: 1
+Sat Index: 4 Sat Value: 7 conf: 0
+
+Update Confindence
+Branch instance: 0x55d6d1216600
+Outcome: 0 wormhole prediction: 1 tage prediction: 0
+Confidence after: -1
+
+WormHole Prediction
+PCtag: 16587 PC: 66348 Branch instance: 0x55d6d1216510
+bi->whLPTotal = 50
+Prior prediction: 0 wh prediction: 1
+Sat Index: 4 Sat Value: 7 conf: 0
+
+Conditional branch update
+PCtag: 16587 PC: 66348 Branch instance: 0x55d6d1216510
+Update taken: LPtotal 50
+Outcome: 0 Prior prediction: 0 wh prediction: 1
+Sat Index: 4 Sat Value: 7 conf: 0
+
+Update Confindence
+Branch instance: 0x55d6d1216510
+Outcome: 0 wormhole prediction: 1 tage prediction: 0
+Confidence after: -1
+
+WormHole Prediction
+PCtag: 16587 PC: 66348 Branch instance: 0x55d6d1216910
+bi->whLPTotal = 50
+Prior prediction: 0 wh prediction: 1
+Sat Index: 4 Sat Value: 7 conf: 0
+
+
+WormHole Prediction
+PCtag: 16587 PC: 66348 Branch instance: 0x55d6d1216730
+bi->whLPTotal = 50
+Prior prediction: 0 wh prediction: 1
+Sat Index: 4 Sat Value: 7 conf: 0
+
+
+WormHole Prediction
+PCtag: 16587 PC: 66348 Branch instance: 0x55d6d1216400
+bi->whLPTotal = 50
+Prior prediction: 0 wh prediction: 1
+Sat Index: 4 Sat Value: 7 conf: 0
+
+
+WormHole Prediction
+PCtag: 16587 PC: 66348 Branch instance: 0x55d6d1216770
+bi->whLPTotal = 50
+Prior prediction: 0 wh prediction: 1
+Sat Index: 4 Sat Value: 7 conf: 0
+
+
+WormHole Prediction
+PCtag: 16587 PC: 66348 Branch instance: 0x55d6d12160c0
+bi->whLPTotal = 50
+Prior prediction: 0 wh prediction: 1
+Sat Index: 4 Sat Value: 7 conf: 0
+
+
+WormHole Prediction
+PCtag: 16587 PC: 66348 Branch instance: 0x55d6d1216750
+bi->whLPTotal = 50
+Prior prediction: 0 wh prediction: 1
+Sat Index: 4 Sat Value: 7 conf: 0
+
+
+WormHole Prediction
+PCtag: 16587 PC: 66348 Branch instance: 0x55d6d1216660
+bi->whLPTotal = 50
+Prior prediction: 0 wh prediction: 1
+Sat Index: 4 Sat Value: 7 conf: 0
+
+
+WormHole Prediction
+PCtag: 16587 PC: 66348 Branch instance: 0x55d6d1216ae0
+bi->whLPTotal = 50
+Prior prediction: 0 wh prediction: 1
+Sat Index: 4 Sat Value: 7 conf: 0
+
+
+WormHole Prediction
+PCtag: 16587 PC: 66348 Branch instance: 0x55d6d12165f0
+bi->whLPTotal = 50
+Prior prediction: 0 wh prediction: 1
+Sat Index: 4 Sat Value: 7 conf: 0
+
+Conditional branch update
+PCtag: 16587 PC: 66348 Branch instance: 0x55d6d1216ae0
+Update taken: LPtotal 50
+Outcome: 0 Prior prediction: 0 wh prediction: 1
+Sat Index: 4 Sat Value: 7 conf: 0
+
+Update Confindence
+Branch instance: 0x55d6d1216ae0
+Outcome: 0 wormhole prediction: 1 tage prediction: 0
+Confidence after: -1
+
+WormHole Prediction
+PCtag: 16587 PC: 66348 Branch instance: 0x55d6d1216790
+bi->whLPTotal = 50
+Prior prediction: 0 wh prediction: 1
+Sat Index: 4 Sat Value: 7 conf: 0
+
+Conditional branch update
+PCtag: 16587 PC: 66348 Branch instance: 0x55d6d1216790
+Update taken: LPtotal 50
+Outcome: 0 Prior prediction: 0 wh prediction: 1
+Sat Index: 4 Sat Value: 7 conf: 0
+
+Update Confindence
+Branch instance: 0x55d6d1216790
+Outcome: 0 wormhole prediction: 1 tage prediction: 0
+Confidence after: -1
+
+WormHole Prediction
+PCtag: 16587 PC: 66348 Branch instance: 0x55d6d1216770
+bi->whLPTotal = 50
+Prior prediction: 0 wh prediction: 1
+Sat Index: 4 Sat Value: 7 conf: 0
+
+Conditional branch update
+PCtag: 16587 PC: 66348 Branch instance: 0x55d6d1216770
+Update taken: LPtotal 50
+Outcome: 0 Prior prediction: 0 wh prediction: 1
+Sat Index: 4 Sat Value: 7 conf: 0
+
+Update Confindence
+Branch instance: 0x55d6d1216770
+Outcome: 0 wormhole prediction: 1 tage prediction: 0
+Confidence after: -1
+
+WormHole Prediction
+PCtag: 16587 PC: 66348 Branch instance: 0x55d6d1216520
+bi->whLPTotal = 50
+Prior prediction: 0 wh prediction: 1
+Sat Index: 4 Sat Value: 7 conf: 0
+
+Conditional branch update
+PCtag: 16587 PC: 66348 Branch instance: 0x55d6d1216520
+Update taken: LPtotal 50
+Outcome: 0 Prior prediction: 0 wh prediction: 1
+Sat Index: 4 Sat Value: 7 conf: 0
+
+Update Confindence
+Branch instance: 0x55d6d1216520
+Outcome: 0 wormhole prediction: 1 tage prediction: 0
+Confidence after: -1
+
+WormHole Prediction
+PCtag: 16587 PC: 66348 Branch instance: 0x55d6d1216670
+bi->whLPTotal = 50
+Prior prediction: 0 wh prediction: 1
+Sat Index: 4 Sat Value: 7 conf: 0
+
+Conditional branch update
+PCtag: 16587 PC: 66348 Branch instance: 0x55d6d1216670
+Update taken: LPtotal 50
+Outcome: 0 Prior prediction: 0 wh prediction: 1
+Sat Index: 4 Sat Value: 7 conf: 0
+
+Update Confindence
+Branch instance: 0x55d6d1216670
+Outcome: 0 wormhole prediction: 1 tage prediction: 0
+Confidence after: -1
+
+WormHole Prediction
+PCtag: 16587 PC: 66348 Branch instance: 0x55d6d1216910
+bi->whLPTotal = 50
+Prior prediction: 0 wh prediction: 1
+Sat Index: 4 Sat Value: 7 conf: 0
+
+Conditional branch update
+PCtag: 16587 PC: 66348 Branch instance: 0x55d6d1216910
+Update taken: LPtotal 50
+Outcome: 0 Prior prediction: 0 wh prediction: 1
+Sat Index: 4 Sat Value: 7 conf: 0
+
+Update Confindence
+Branch instance: 0x55d6d1216910
+Outcome: 0 wormhole prediction: 1 tage prediction: 0
+Confidence after: -1
+
+WormHole Prediction
+PCtag: 16587 PC: 66348 Branch instance: 0x55d6d12164f0
+bi->whLPTotal = 50
+Prior prediction: 0 wh prediction: 1
+Sat Index: 4 Sat Value: 7 conf: 0
+
+Conditional branch update
+PCtag: 16587 PC: 66348 Branch instance: 0x55d6d12164f0
+Update taken: LPtotal 50
+Outcome: 0 Prior prediction: 0 wh prediction: 1
+Sat Index: 4 Sat Value: 7 conf: 0
+
+Update Confindence
+Branch instance: 0x55d6d12164f0
+Outcome: 0 wormhole prediction: 1 tage prediction: 0
+Confidence after: -1
+
+WormHole Prediction
+PCtag: 16587 PC: 66348 Branch instance: 0x55d6d1216a60
+bi->whLPTotal = 50
+Prior prediction: 0 wh prediction: 1
+Sat Index: 4 Sat Value: 7 conf: 0
+
+Conditional branch update
+PCtag: 16587 PC: 66348 Branch instance: 0x55d6d1216a60
+Update taken: LPtotal 50
+Outcome: 0 Prior prediction: 0 wh prediction: 1
+Sat Index: 4 Sat Value: 7 conf: 0
+
+Update Confindence
+Branch instance: 0x55d6d1216a60
+Outcome: 0 wormhole prediction: 1 tage prediction: 0
+Confidence after: -1
+
+WormHole Prediction
+PCtag: 16587 PC: 66348 Branch instance: 0x55d6d1216770
+bi->whLPTotal = 50
+Prior prediction: 0 wh prediction: 1
+Sat Index: 4 Sat Value: 7 conf: 0
+
+Conditional branch update
+PCtag: 16587 PC: 66348 Branch instance: 0x55d6d1216770
+Update taken: LPtotal 50
+Outcome: 0 Prior prediction: 0 wh prediction: 1
+Sat Index: 4 Sat Value: 7 conf: 0
+
+Update Confindence
+Branch instance: 0x55d6d1216770
+Outcome: 0 wormhole prediction: 1 tage prediction: 0
+Confidence after: -1
+
+WormHole Prediction
+PCtag: 16587 PC: 66348 Branch instance: 0x55d6d1216520
+bi->whLPTotal = 50
+Prior prediction: 0 wh prediction: 1
+Sat Index: 4 Sat Value: 7 conf: 0
+
+Conditional branch update
+PCtag: 16587 PC: 66348 Branch instance: 0x55d6d1216520
+Update taken: LPtotal 50
+Outcome: 0 Prior prediction: 0 wh prediction: 1
+Sat Index: 4 Sat Value: 7 conf: 0
+
+Update Confindence
+Branch instance: 0x55d6d1216520
+Outcome: 0 wormhole prediction: 1 tage prediction: 0
+Confidence after: -1
+
+WormHole Prediction
+PCtag: 16587 PC: 66348 Branch instance: 0x55d6d1216670
+bi->whLPTotal = 50
+Prior prediction: 0 wh prediction: 1
+Sat Index: 4 Sat Value: 7 conf: 0
+
+Conditional branch update
+PCtag: 16587 PC: 66348 Branch instance: 0x55d6d1216670
+Update taken: LPtotal 50
+Outcome: 0 Prior prediction: 0 wh prediction: 1
+Sat Index: 4 Sat Value: 7 conf: 0
+
+Update Confindence
+Branch instance: 0x55d6d1216670
+Outcome: 0 wormhole prediction: 1 tage prediction: 0
+Confidence after: -1
+
+WormHole Prediction
+PCtag: 16587 PC: 66348 Branch instance: 0x55d6d1216910
+bi->whLPTotal = 50
+Prior prediction: 0 wh prediction: 1
+Sat Index: 4 Sat Value: 7 conf: 0
+
+Conditional branch update
+PCtag: 16587 PC: 66348 Branch instance: 0x55d6d1216910
+Update taken: LPtotal 50
+Outcome: 0 Prior prediction: 0 wh prediction: 1
+Sat Index: 4 Sat Value: 7 conf: 0
+
+Update Confindence
+Branch instance: 0x55d6d1216910
+Outcome: 0 wormhole prediction: 1 tage prediction: 0
+Confidence after: -1
+
+WormHole Prediction
+PCtag: 16587 PC: 66348 Branch instance: 0x55d6d12164f0
+bi->whLPTotal = 50
+Prior prediction: 0 wh prediction: 1
+Sat Index: 4 Sat Value: 7 conf: 0
+
+Conditional branch update
+PCtag: 16587 PC: 66348 Branch instance: 0x55d6d12164f0
+Update taken: LPtotal 50
+Outcome: 0 Prior prediction: 0 wh prediction: 1
+Sat Index: 4 Sat Value: 7 conf: 0
+
+Update Confindence
+Branch instance: 0x55d6d12164f0
+Outcome: 0 wormhole prediction: 1 tage prediction: 0
+Confidence after: -1
+
+WormHole Prediction
+PCtag: 16587 PC: 66348 Branch instance: 0x55d6d1216a60
+bi->whLPTotal = 50
+Prior prediction: 0 wh prediction: 1
+Sat Index: 4 Sat Value: 7 conf: 0
+
+Conditional branch update
+PCtag: 16587 PC: 66348 Branch instance: 0x55d6d1216a60
+Update taken: LPtotal 50
+Outcome: 0 Prior prediction: 0 wh prediction: 1
+Sat Index: 4 Sat Value: 7 conf: 0
+
+Update Confindence
+Branch instance: 0x55d6d1216a60
+Outcome: 0 wormhole prediction: 1 tage prediction: 0
+Confidence after: -1
+
+WormHole Prediction
+PCtag: 16587 PC: 66348 Branch instance: 0x55d6d1216770
+bi->whLPTotal = 50
+Prior prediction: 0 wh prediction: 1
+Sat Index: 4 Sat Value: 7 conf: 0
+
+Conditional branch update
+PCtag: 16587 PC: 66348 Branch instance: 0x55d6d1216770
+Update taken: LPtotal 50
+Outcome: 0 Prior prediction: 0 wh prediction: 1
+Sat Index: 4 Sat Value: 7 conf: 0
+
+Update Confindence
+Branch instance: 0x55d6d1216770
+Outcome: 0 wormhole prediction: 1 tage prediction: 0
+Confidence after: -1
+
+WormHole Prediction
+PCtag: 16587 PC: 66348 Branch instance: 0x55d6d1216520
+bi->whLPTotal = 50
+Prior prediction: 0 wh prediction: 1
+Sat Index: 4 Sat Value: 7 conf: 0
+
+Conditional branch update
+PCtag: 16587 PC: 66348 Branch instance: 0x55d6d1216520
+Update taken: LPtotal 50
+Outcome: 0 Prior prediction: 0 wh prediction: 1
+Sat Index: 4 Sat Value: 7 conf: 0
+
+Update Confindence
+Branch instance: 0x55d6d1216520
+Outcome: 0 wormhole prediction: 1 tage prediction: 0
+Confidence after: -1
+
+WormHole Prediction
+PCtag: 16587 PC: 66348 Branch instance: 0x55d6d1216670
+bi->whLPTotal = 50
+Prior prediction: 0 wh prediction: 1
+Sat Index: 4 Sat Value: 7 conf: 0
+
+Conditional branch update
+PCtag: 16587 PC: 66348 Branch instance: 0x55d6d1216670
+Update taken: LPtotal 50
+Outcome: 0 Prior prediction: 0 wh prediction: 1
+Sat Index: 4 Sat Value: 7 conf: 0
+
+Update Confindence
+Branch instance: 0x55d6d1216670
+Outcome: 0 wormhole prediction: 1 tage prediction: 0
+Confidence after: -1
+
+WormHole Prediction
+PCtag: 16587 PC: 66348 Branch instance: 0x55d6d1216910
+bi->whLPTotal = 50
+Prior prediction: 0 wh prediction: 1
+Sat Index: 4 Sat Value: 7 conf: 0
+
+Conditional branch update
+PCtag: 16587 PC: 66348 Branch instance: 0x55d6d1216910
+Update taken: LPtotal 50
+Outcome: 0 Prior prediction: 0 wh prediction: 1
+Sat Index: 4 Sat Value: 7 conf: 0
+
+Update Confindence
+Branch instance: 0x55d6d1216910
+Outcome: 0 wormhole prediction: 1 tage prediction: 0
+Confidence after: -1
+
+WormHole Prediction
+PCtag: 16587 PC: 66348 Branch instance: 0x55d6d12164f0
+bi->whLPTotal = 50
+Prior prediction: 0 wh prediction: 1
+Sat Index: 4 Sat Value: 7 conf: 0
+
+Conditional branch update
+PCtag: 16587 PC: 66348 Branch instance: 0x55d6d12164f0
+Update taken: LPtotal 50
+Outcome: 0 Prior prediction: 0 wh prediction: 1
+Sat Index: 4 Sat Value: 7 conf: 0
+
+Update Confindence
+Branch instance: 0x55d6d12164f0
+Outcome: 0 wormhole prediction: 1 tage prediction: 0
+Confidence after: -1
+
+WormHole Prediction
+PCtag: 16587 PC: 66348 Branch instance: 0x55d6d1216a60
+bi->whLPTotal = 50
+Prior prediction: 0 wh prediction: 1
+Sat Index: 4 Sat Value: 7 conf: 0
+
+Conditional branch update
+PCtag: 16587 PC: 66348 Branch instance: 0x55d6d1216a60
+Update taken: LPtotal 50
+Outcome: 0 Prior prediction: 0 wh prediction: 1
+Sat Index: 4 Sat Value: 7 conf: 0
+
+Update Confindence
+Branch instance: 0x55d6d1216a60
+Outcome: 0 wormhole prediction: 1 tage prediction: 0
+Confidence after: -1
+
+WormHole Prediction
+PCtag: 16587 PC: 66348 Branch instance: 0x55d6d1216770
+bi->whLPTotal = 50
+Prior prediction: 0 wh prediction: 1
+Sat Index: 4 Sat Value: 7 conf: 0
+
+Conditional branch update
+PCtag: 16587 PC: 66348 Branch instance: 0x55d6d1216770
+Update taken: LPtotal 50
+Outcome: 0 Prior prediction: 0 wh prediction: 1
+Sat Index: 4 Sat Value: 7 conf: 0
+
+Update Confindence
+Branch instance: 0x55d6d1216770
+Outcome: 0 wormhole prediction: 1 tage prediction: 0
+Confidence after: -1
+
+WormHole Prediction
+PCtag: 16587 PC: 66348 Branch instance: 0x55d6d1216520
+bi->whLPTotal = 50
+Prior prediction: 0 wh prediction: 1
+Sat Index: 4 Sat Value: 7 conf: 0
+
+Conditional branch update
+PCtag: 16587 PC: 66348 Branch instance: 0x55d6d1216520
+Update taken: LPtotal 50
+Outcome: 0 Prior prediction: 0 wh prediction: 1
+Sat Index: 4 Sat Value: 7 conf: 0
+
+Update Confindence
+Branch instance: 0x55d6d1216520
+Outcome: 0 wormhole prediction: 1 tage prediction: 0
+Confidence after: -1
+
+WormHole Prediction
+PCtag: 16587 PC: 66348 Branch instance: 0x55d6d1216670
+bi->whLPTotal = 50
+Prior prediction: 0 wh prediction: 1
+Sat Index: 4 Sat Value: 7 conf: 0
+
+Conditional branch update
+PCtag: 16587 PC: 66348 Branch instance: 0x55d6d1216670
+Update taken: LPtotal 50
+Outcome: 0 Prior prediction: 0 wh prediction: 1
+Sat Index: 4 Sat Value: 7 conf: 0
+
+Update Confindence
+Branch instance: 0x55d6d1216670
+Outcome: 0 wormhole prediction: 1 tage prediction: 0
+Confidence after: -1
+
+WormHole Prediction
+PCtag: 16587 PC: 66348 Branch instance: 0x55d6d1216910
+bi->whLPTotal = 50
+Prior prediction: 0 wh prediction: 1
+Sat Index: 4 Sat Value: 7 conf: 0
+
+Conditional branch update
+PCtag: 16587 PC: 66348 Branch instance: 0x55d6d1216910
+Update taken: LPtotal 50
+Outcome: 0 Prior prediction: 0 wh prediction: 1
+Sat Index: 4 Sat Value: 7 conf: 0
+
+Update Confindence
+Branch instance: 0x55d6d1216910
+Outcome: 0 wormhole prediction: 1 tage prediction: 0
+Confidence after: -1
+
+WormHole Prediction
+PCtag: 16587 PC: 66348 Branch instance: 0x55d6d12164f0
+bi->whLPTotal = 50
+Prior prediction: 0 wh prediction: 1
+Sat Index: 4 Sat Value: 7 conf: 0
+
+Conditional branch update
+PCtag: 16587 PC: 66348 Branch instance: 0x55d6d12164f0
+Update taken: LPtotal 50
+Outcome: 0 Prior prediction: 0 wh prediction: 1
+Sat Index: 4 Sat Value: 7 conf: 0
+
+Update Confindence
+Branch instance: 0x55d6d12164f0
+Outcome: 0 wormhole prediction: 1 tage prediction: 0
+Confidence after: -1
+
+WormHole Prediction
+PCtag: 16587 PC: 66348 Branch instance: 0x55d6d1216a60
+bi->whLPTotal = 50
+Prior prediction: 0 wh prediction: 1
+Sat Index: 4 Sat Value: 7 conf: 0
+
+Conditional branch update
+PCtag: 16587 PC: 66348 Branch instance: 0x55d6d1216a60
+Update taken: LPtotal 50
+Outcome: 0 Prior prediction: 0 wh prediction: 1
+Sat Index: 4 Sat Value: 7 conf: 0
+
+Update Confindence
+Branch instance: 0x55d6d1216a60
+Outcome: 0 wormhole prediction: 1 tage prediction: 0
+Confidence after: -1
+
+WormHole Prediction
+PCtag: 16587 PC: 66348 Branch instance: 0x55d6d1216770
+bi->whLPTotal = 50
+Prior prediction: 0 wh prediction: 1
+Sat Index: 4 Sat Value: 7 conf: 0
+
+Conditional branch update
+PCtag: 16587 PC: 66348 Branch instance: 0x55d6d1216770
+Update taken: LPtotal 50
+Outcome: 0 Prior prediction: 0 wh prediction: 1
+Sat Index: 4 Sat Value: 7 conf: 0
+
+Update Confindence
+Branch instance: 0x55d6d1216770
+Outcome: 0 wormhole prediction: 1 tage prediction: 0
+Confidence after: -1
+
+WormHole Prediction
+PCtag: 16587 PC: 66348 Branch instance: 0x55d6d1216520
+bi->whLPTotal = 50
+Prior prediction: 0 wh prediction: 1
+Sat Index: 4 Sat Value: 7 conf: 0
+
+Conditional branch update
+PCtag: 16587 PC: 66348 Branch instance: 0x55d6d1216520
+Update taken: LPtotal 50
+Outcome: 0 Prior prediction: 0 wh prediction: 1
+Sat Index: 4 Sat Value: 7 conf: 0
+
+Update Confindence
+Branch instance: 0x55d6d1216520
+Outcome: 0 wormhole prediction: 1 tage prediction: 0
+Confidence after: -1
+
+WormHole Prediction
+PCtag: 16587 PC: 66348 Branch instance: 0x55d6d1216670
+bi->whLPTotal = 50
+Prior prediction: 0 wh prediction: 1
+Sat Index: 4 Sat Value: 7 conf: 0
+
+Conditional branch update
+PCtag: 16587 PC: 66348 Branch instance: 0x55d6d1216670
+Update taken: LPtotal 50
+Outcome: 0 Prior prediction: 0 wh prediction: 1
+Sat Index: 4 Sat Value: 7 conf: 0
+
+Update Confindence
+Branch instance: 0x55d6d1216670
+Outcome: 0 wormhole prediction: 1 tage prediction: 0
+Confidence after: -1
+
+WormHole Prediction
+PCtag: 16587 PC: 66348 Branch instance: 0x55d6d1216910
+bi->whLPTotal = 50
+Prior prediction: 0 wh prediction: 1
+Sat Index: 4 Sat Value: 7 conf: 0
+
+Conditional branch update
+PCtag: 16587 PC: 66348 Branch instance: 0x55d6d1216910
+Update taken: LPtotal 50
+Outcome: 0 Prior prediction: 0 wh prediction: 1
+Sat Index: 4 Sat Value: 7 conf: 0
+
+Update Confindence
+Branch instance: 0x55d6d1216910
+Outcome: 0 wormhole prediction: 1 tage prediction: 0
+Confidence after: -1
+
+WormHole Prediction
+PCtag: 16587 PC: 66348 Branch instance: 0x55d6d12164f0
+bi->whLPTotal = 50
+Prior prediction: 0 wh prediction: 1
+Sat Index: 4 Sat Value: 7 conf: 0
+
+Conditional branch update
+PCtag: 16587 PC: 66348 Branch instance: 0x55d6d12164f0
+Update taken: LPtotal 50
+Outcome: 0 Prior prediction: 0 wh prediction: 1
+Sat Index: 4 Sat Value: 7 conf: 0
+
+Update Confindence
+Branch instance: 0x55d6d12164f0
+Outcome: 0 wormhole prediction: 1 tage prediction: 0
+Confidence after: -1
+
+WormHole Prediction
+PCtag: 16587 PC: 66348 Branch instance: 0x55d6d1216a60
+bi->whLPTotal = 50
+Prior prediction: 0 wh prediction: 1
+Sat Index: 4 Sat Value: 7 conf: 0
+
+Conditional branch update
+PCtag: 16587 PC: 66348 Branch instance: 0x55d6d1216a60
+Update taken: LPtotal 50
+Outcome: 0 Prior prediction: 0 wh prediction: 1
+Sat Index: 4 Sat Value: 7 conf: 0
+
+Update Confindence
+Branch instance: 0x55d6d1216a60
+Outcome: 0 wormhole prediction: 1 tage prediction: 0
+Confidence after: -1
+
+WormHole Prediction
+PCtag: 16587 PC: 66348 Branch instance: 0x55d6d1216770
+bi->whLPTotal = 50
+Prior prediction: 0 wh prediction: 1
+Sat Index: 4 Sat Value: 7 conf: 0
+
+Conditional branch update
+PCtag: 16587 PC: 66348 Branch instance: 0x55d6d1216770
+Update taken: LPtotal 50
+Outcome: 0 Prior prediction: 0 wh prediction: 1
+Sat Index: 4 Sat Value: 7 conf: 0
+
+Update Confindence
+Branch instance: 0x55d6d1216770
+Outcome: 0 wormhole prediction: 1 tage prediction: 0
+Confidence after: -1
+
+WormHole Prediction
+PCtag: 16587 PC: 66348 Branch instance: 0x55d6d1216520
+bi->whLPTotal = 50
+Prior prediction: 0 wh prediction: 1
+Sat Index: 4 Sat Value: 7 conf: 0
+
+Conditional branch update
+PCtag: 16587 PC: 66348 Branch instance: 0x55d6d1216520
+Update taken: LPtotal 50
+Outcome: 0 Prior prediction: 0 wh prediction: 1
+Sat Index: 4 Sat Value: 7 conf: 0
+
+Update Confindence
+Branch instance: 0x55d6d1216520
+Outcome: 0 wormhole prediction: 1 tage prediction: 0
+Confidence after: -1
+
+WormHole Prediction
+PCtag: 16587 PC: 66348 Branch instance: 0x55d6d1216670
+bi->whLPTotal = 50
+Prior prediction: 0 wh prediction: 1
+Sat Index: 4 Sat Value: 7 conf: 0
+
+Conditional branch update
+PCtag: 16587 PC: 66348 Branch instance: 0x55d6d1216670
+Update taken: LPtotal 50
+Outcome: 0 Prior prediction: 0 wh prediction: 1
+Sat Index: 4 Sat Value: 7 conf: 0
+
+Update Confindence
+Branch instance: 0x55d6d1216670
+Outcome: 0 wormhole prediction: 1 tage prediction: 0
+Confidence after: -1
+
+WormHole Prediction
+PCtag: 16587 PC: 66348 Branch instance: 0x55d6d1216910
+bi->whLPTotal = 50
+Prior prediction: 0 wh prediction: 1
+Sat Index: 4 Sat Value: 7 conf: 0
+
+Conditional branch update
+PCtag: 16587 PC: 66348 Branch instance: 0x55d6d1216910
+Update taken: LPtotal 50
+Outcome: 0 Prior prediction: 0 wh prediction: 1
+Sat Index: 4 Sat Value: 7 conf: 0
+
+Update Confindence
+Branch instance: 0x55d6d1216910
+Outcome: 0 wormhole prediction: 1 tage prediction: 0
+Confidence after: -1
+
+WormHole Prediction
+PCtag: 16587 PC: 66348 Branch instance: 0x55d6d12164f0
+bi->whLPTotal = 50
+Prior prediction: 0 wh prediction: 1
+Sat Index: 4 Sat Value: 7 conf: 0
+
+Conditional branch update
+PCtag: 16587 PC: 66348 Branch instance: 0x55d6d12164f0
+Update taken: LPtotal 50
+Outcome: 0 Prior prediction: 0 wh prediction: 1
+Sat Index: 4 Sat Value: 7 conf: 0
+
+Update Confindence
+Branch instance: 0x55d6d12164f0
+Outcome: 0 wormhole prediction: 1 tage prediction: 0
+Confidence after: -1
+
+WormHole Prediction
+PCtag: 16587 PC: 66348 Branch instance: 0x55d6d1216a60
+bi->whLPTotal = 50
+Prior prediction: 0 wh prediction: 1
+Sat Index: 4 Sat Value: 7 conf: 0
+
+Conditional branch update
+PCtag: 16587 PC: 66348 Branch instance: 0x55d6d1216a60
+Update taken: LPtotal 50
+Outcome: 0 Prior prediction: 0 wh prediction: 1
+Sat Index: 4 Sat Value: 7 conf: 0
+
+Update Confindence
+Branch instance: 0x55d6d1216a60
+Outcome: 0 wormhole prediction: 1 tage prediction: 0
+Confidence after: -1
+
+WormHole Prediction
+PCtag: 16587 PC: 66348 Branch instance: 0x55d6d1216770
+bi->whLPTotal = 50
+Prior prediction: 0 wh prediction: 1
+Sat Index: 4 Sat Value: 7 conf: 0
+
+Conditional branch update
+PCtag: 16587 PC: 66348 Branch instance: 0x55d6d1216770
+Update taken: LPtotal 50
+Outcome: 0 Prior prediction: 0 wh prediction: 1
+Sat Index: 4 Sat Value: 7 conf: 0
+
+Update Confindence
+Branch instance: 0x55d6d1216770
+Outcome: 0 wormhole prediction: 1 tage prediction: 0
+Confidence after: -1
+
+WormHole Prediction
+PCtag: 16587 PC: 66348 Branch instance: 0x55d6d1216250
+bi->whLPTotal = 50
+Prior prediction: 0 wh prediction: 1
+Sat Index: 4 Sat Value: 7 conf: 0
+
+Conditional branch update
+PCtag: 16587 PC: 66348 Branch instance: 0x55d6d1216250
+Update taken: LPtotal 50
+Outcome: 0 Prior prediction: 0 wh prediction: 1
+Sat Index: 4 Sat Value: 7 conf: 0
+
+Update Confindence
+Branch instance: 0x55d6d1216250
+Outcome: 0 wormhole prediction: 1 tage prediction: 0
+Confidence after: -1
+
+WormHole Prediction
+PCtag: 16587 PC: 66348 Branch instance: 0x55d6d12163c0
+bi->whLPTotal = 50
+Prior prediction: 0 wh prediction: 1
+Sat Index: 4 Sat Value: 7 conf: 0
+
+Conditional branch update
+PCtag: 16587 PC: 66348 Branch instance: 0x55d6d12163c0
+Update taken: LPtotal 50
+Outcome: 0 Prior prediction: 0 wh prediction: 1
+Sat Index: 4 Sat Value: 7 conf: 0
+
+Update Confindence
+Branch instance: 0x55d6d12163c0
+Outcome: 0 wormhole prediction: 1 tage prediction: 0
+Confidence after: -1
+
+WormHole Prediction
+PCtag: 16587 PC: 66348 Branch instance: 0x55d6d12160d0
+bi->whLPTotal = 50
+Prior prediction: 0 wh prediction: 1
+Sat Index: 4 Sat Value: 7 conf: 0
+
+Conditional branch update
+PCtag: 16587 PC: 66348 Branch instance: 0x55d6d12160d0
+Update taken: LPtotal 50
+Outcome: 0 Prior prediction: 0 wh prediction: 1
+Sat Index: 4 Sat Value: 7 conf: 0
+
+Update Confindence
+Branch instance: 0x55d6d12160d0
+Outcome: 0 wormhole prediction: 1 tage prediction: 0
+Confidence after: -1
+
+WormHole Prediction
+PCtag: 16587 PC: 66348 Branch instance: 0x55d6d1216a10
+bi->whLPTotal = 50
+Prior prediction: 0 wh prediction: 1
+Sat Index: 4 Sat Value: 7 conf: 0
+
+Conditional branch update
+PCtag: 16587 PC: 66348 Branch instance: 0x55d6d1216a10
+Update taken: LPtotal 50
+Outcome: 0 Prior prediction: 0 wh prediction: 1
+Sat Index: 4 Sat Value: 7 conf: 0
+
+Update Confindence
+Branch instance: 0x55d6d1216a10
+Outcome: 0 wormhole prediction: 1 tage prediction: 0
+Confidence after: -1

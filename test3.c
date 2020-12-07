@@ -20,7 +20,13 @@ int main()
 			sum++;
 			sum++;
 			sum++;
+			sum++;
+			sum++;
+			sum++;
 		}
+		sum++;
+			sum++;
+			sum++;
 
 	}
 	return 0;

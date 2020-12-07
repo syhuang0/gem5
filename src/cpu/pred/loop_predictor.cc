@@ -138,8 +138,8 @@ LoopPredictor::getLoop(Addr pc, BranchInfo* bi, bool speculative,
             if ((iter + 1) == ltable[idx].numIter) {
                 return useDirectionBit ? !(ltable[idx].dir) : false;
             } else {
-                if (ltable[idx].numIter > 0)
-                  bi-> numIter = ltable[idx].numIter - 1;
+                // if (ltable[idx].numIter > 0)
+                //   bi-> numIter = ltable[idx].numIter - 1;
                 return useDirectionBit ? (ltable[idx].dir) : true;
             }
         }

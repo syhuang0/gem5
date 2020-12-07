@@ -265,6 +265,7 @@ StatisticalCorrector::scPredict(ThreadID tid, Addr branch_pc, bool cond_branch,
 
         int thres = gPredictions(tid, branch_pc, bi, lsum, phist);
 
+        
         // These will be needed at update time
         bi->lsum = lsum;
         bi->thres = thres;
@@ -293,6 +294,11 @@ StatisticalCorrector::scPredict(ThreadID tid, Addr branch_pc, bool cond_branch,
 
             bi->usedScPred = useScPred;
             if (useScPred) {
+
+              // if(abs(lsum) < (thres/2)){
+              //   std::cerr << "Stat Corr: PC: "<< branch_pc << " lsum: " << lsum <<  " threshold: "<< thres << "\n";
+              // }
+              
                 pred_taken = scPred;
                 bi->scPred = scPred;
             }

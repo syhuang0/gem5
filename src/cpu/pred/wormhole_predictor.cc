@@ -109,12 +109,12 @@ WormholePredictor::WhPredict(ThreadID tid, Addr branch_pc, bool cond_branch,
     
     if(cond_branch){
 
-        if (bi->whLPTotal >= 2) {
+        if (bi->whLPTotal >= 7) {
             if ((pcIndex = pctagsearch(branch_pc, instShiftAmt)) >=0) {
                 // std::cerr << "\nWormHole Prediction\n";
                 // std::cerr << "PCtag: "<< getPCtag(branch_pc,instShiftAmt) << " PC: " << branch_pc << " Branch instance "<< bi << std::endl;
                 // std::cerr << "bi->whLPTotal = "<<bi->whLPTotal << std::endl;
-                if (whTable[pcIndex].localhist.size() >= ((unsigned int)bi->whLPTotal + 1)) {
+                if (whTable[pcIndex].localhist.size() > ((unsigned int)bi->whLPTotal)) {
 
                     // generate index using 2D local history bits
                     bi->whIdx = getSatIndex(pcIndex, bi);
@@ -123,10 +123,20 @@ WormholePredictor::WhPredict(ThreadID tid, Addr branch_pc, bool cond_branch,
                     bi->whPred = (whTable[pcIndex].SatCtrs[bi->whIdx] >=0);
                     
                     if (whTable[pcIndex].conf >= 0 && (abs((2*whTable[pcIndex].SatCtrs[bi->whIdx]) + 1) >= SatCtrThres)) {
+                        
                         // std::cerr << "wh prediction: " <<  bi->whPred << std::endl;
                         bi->whPrevPred = prev_pred_taken;
                         pred_taken = bi->whPred;
                         bi->usedWhPred = true;
+
+                         if(prev_pred_taken != bi->whPred){
+                          //  std::cerr << "\nWormHole Prediction\n";
+                          //  std::cerr << "PCtag: "<< getPCtag(branch_pc,instShiftAmt) << " PC: " << branch_pc << " Branch instance: "<< bi << std::endl;
+                          //  std::cerr << "bi->whLPTotal = "<<bi->whLPTotal << std::endl;
+                          //  std::cerr << "Prior prediction: " << prev_pred_taken << " wh prediction: " <<  bi->whPred << std::endl;
+                          //  std::cerr << "Sat Index: " << bi->whIdx << " Sat Value: "<< whTable[pcIndex].SatCtrs[bi->whIdx] << " conf: " << whTable[pcIndex].conf <<std::endl;
+                          //  std::cerr << "\n";
+                        }
                     }
                 }
               }
@@ -168,12 +178,12 @@ WormholePredictor::addworm_entry(Addr branch_pc, unsigned int instShiftAmt)
 }
 
 void 
-WormholePredictor::UpdateRanking(ThreadID tid, Addr branch_pc, int lsum, bool loopPredValid, 
-                                 unsigned int instShiftAmt)
+WormholePredictor::UpdateRanking(ThreadID tid, Addr branch_pc, int lsum, int thres, bool loopPredValid, 
+                                 unsigned int instShiftAmt, BranchInfo* bi)
 
 {
     // update the rank for entries in whTable if this branch is difficult for TAGE
-    if (abs ((lsum*2) + 1) <= stats_threshold) {
+    if (abs ((lsum*2) + 1) <= thres *3) {
         // std::cerr << "\nUpdate Ranking\n";
         // std::cerr << "Problematic branch identified " << "PC: " << branch_pc << " lsum: " << lsum << std::endl;
         // std::cerr << "PCtag: "<< getPCtag(branch_pc,instShiftAmt) <<std::endl;
@@ -195,7 +205,8 @@ WormholePredictor::UpdateRanking(ThreadID tid, Addr branch_pc, int lsum, bool lo
             }
 
             addworm_entry(branch_pc, instShiftAmt);
-            // std::cerr << "wormhole entry added. wormhole entry size is " <<whTable.size() << std::endl;
+          //  std::cerr << "\nwormhole entry added. wormhole entry size is " <<whTable.size() << std::endl;
+          //  std::cerr << "PCtag: "<< getPCtag(branch_pc,instShiftAmt) << " PC: " << branch_pc << " Branch instance "<< bi << std::endl;
             
         }
     }
@@ -230,25 +241,42 @@ WormholePredictor::updateConf(BranchInfo* bi, int entry,  bool taken, bool tage_
         } else {
             whTable[entry].conf += (whTable[entry].conf > confMin) ? -1 : 0;
         }
+        if(bi->usedWhPred ){
+            // std::cerr<< "Update Confindence\n";
+          //  std::cerr << "Branch instance: "<< bi << std::endl;
+        // std::cerr << "Outcome: " << taken << " wormhole prediction: " << bi->whPred << " tage prediction: " << tage_pred << std::endl;
+        // std::cerr << "Confidence before: " << whTable[entry].conf; 
+      //  std::cerr << "Confidence after: " << whTable[entry].conf <<std::endl;
+        }
+        
     }
     // std::cerr << "Confidence after: " << whTable[entry].conf <<std::endl;
 }
 
  void
  WormholePredictor::condBranchUpdate(ThreadID tid, Addr branch_pc, bool taken,
-                                 bool tage_pred, BranchInfo* bi, int lsum, bool loopPredValid,
+                                 bool tage_pred, BranchInfo* bi, int lsum, int thres,  bool loopPredValid,
                                  unsigned instShiftAmt)
 
 {
     // // std::cerr << "Update taken: "<< "LPtotal " << bi->whLPTotal << std::endl;
-    UpdateRanking(tid, branch_pc,lsum, loopPredValid, instShiftAmt);
+    UpdateRanking(tid, branch_pc,lsum, thres, loopPredValid, instShiftAmt, bi);
     int pcIndex;
     if((pcIndex = pctagsearch(branch_pc, instShiftAmt)) >=0){
         // std::cerr << "Conditional branch update\n";
         // std::cerr << "Dynamic PC: "<< bi << " PC: "<< branch_pc << std::endl;
         // std::cerr << "Update taken: "<< "LPtotal " << bi->whLPTotal << std::endl;
         // std::cerr << "branch PC tag: " << getPCtag(branch_pc, instShiftAmt) << " whLPTotal " << bi->whLPTotal << std::endl;
-        if(bi->whLPTotal > 1 && whTable[pcIndex].localhist.size() >= ((unsigned int)bi->whLPTotal + 1)){
+        if(bi->whLPTotal >= 7 && whTable[pcIndex].localhist.size() > ((unsigned int)bi->whLPTotal)){
+            if(bi->usedWhPred && bi->whPred != bi->whPrevPred){
+              //  std::cerr << "Conditional branch update\n";
+              //  std::cerr << "PCtag: "<< getPCtag(branch_pc,instShiftAmt) << " PC: " << branch_pc << " Branch instance: "<< bi << std::endl;
+              //  std::cerr << "Update taken: "<< "LPtotal " << bi->whLPTotal << std::endl;                                   
+              //  std::cerr << "Outcome: " << taken << " Prior prediction: " << bi->whPrevPred<< " wh prediction: " <<  bi->whPred << std::endl;
+              //  std::cerr << "Sat Index: " << bi->whIdx << " Sat Value: "<< whTable[pcIndex].SatCtrs[bi->whIdx] << " conf: " << whTable[pcIndex].conf <<std::endl;
+
+              //  std::cerr << "\n";
+            }
             updateConf(bi, pcIndex,  taken, tage_pred);
             ctrUpdate(whTable[pcIndex].SatCtrs[bi->whIdx], taken,  SatCtrWidth);
 
