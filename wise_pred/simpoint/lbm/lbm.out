@@ -1,0 +1,18 @@
+MAIN_printInfo:
+	grid size      : 100 x 100 x 130 = 1.30 * 10^6 Cells
+	nTimeSteps     : 20
+	result file    : reference.dat
+	action         : nothing
+	simulation type: channel flow
+	obstacle file  : /home/min/a/ece565/benchspec-2020/CPU2006/470.lbm//data/ref/input/100_100_130_ldc.of
+
+LBM_showGridStatistics:
+	nObstacleCells:   93331 nAccelCells:       0 nFluidCells: 1206669
+	minRho:   1.0000 maxRho:   1.0000 mass: 1.300000e+06
+	minU: 0.000000e+00 maxU: 0.000000e+00
+
+LBM_showGridStatistics:
+	nObstacleCells:   93331 nAccelCells:       0 nFluidCells: 1206669
+	minRho:   1.0000 maxRho:   1.0336 mass: 1.300963e+06
+	minU: 0.000000e+00 maxU: 1.265212e-02
+
