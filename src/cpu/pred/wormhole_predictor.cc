@@ -97,6 +97,17 @@ WormholePredictor::pctagsearch(Addr branch_pc, unsigned int instShiftAmt)
     }
     return -1; 
 }
+bool
+WormholePredictor::makePrediction(int pcIndex, BranchInfo* bi)
+{
+    return whTable[pcIndex].conf >= 0 && (abs((2*whTable[pcIndex].SatCtrs[bi->whIdx]) + 1) >= SatCtrThres); 
+}
+
+bool 
+WormholePredictor::recordingloophistory(int pcIndex, BranchInfo* bi)
+{
+    return whTable[pcIndex].localhist.size() <= ((unsigned int)bi->whLPTotal);
+}
 
 bool
 WormholePredictor::WhPredict(ThreadID tid, Addr branch_pc, bool cond_branch,
@@ -109,41 +120,36 @@ WormholePredictor::WhPredict(ThreadID tid, Addr branch_pc, bool cond_branch,
     
     if(cond_branch){
 
-        if (bi->whLPTotal >= 7) {
-            if ((pcIndex = pctagsearch(branch_pc, instShiftAmt)) >=0) {
+        if (bi->whLPTotal >= 7 && ((pcIndex = pctagsearch(branch_pc, instShiftAmt)) >=0) && !recordingloophistory(pcIndex, bi)) {
+            // std::cerr << "\nWormHole Prediction\n";
+            // std::cerr << "PCtag: "<< getPCtag(branch_pc,instShiftAmt) << " PC: " << branch_pc << " Branch instance "<< bi << std::endl;
+            // std::cerr << "bi->whLPTotal = "<<bi->whLPTotal << std::endl;
+                // generate index using 2D local history bits
                 // std::cerr << "\nWormHole Prediction\n";
-                // std::cerr << "PCtag: "<< getPCtag(branch_pc,instShiftAmt) << " PC: " << branch_pc << " Branch instance "<< bi << std::endl;
-                // std::cerr << "bi->whLPTotal = "<<bi->whLPTotal << std::endl;
-                if (whTable[pcIndex].localhist.size() > ((unsigned int)bi->whLPTotal)) {
-
-                    // generate index using 2D local history bits
-                    // std::cerr << "\nWormHole Prediction\n";
-                // std::cerr << "PCtag: "<< getPCtag(branch_pc,instShiftAmt) << " PC: " << branch_pc << " Branch instance "<< bi << std::endl;
-                // std::cerr << "bi->whLPTotal = "<<bi->whLPTotal << std::endl;
-                    bi->whIdx = getSatIndex(pcIndex, bi);
-                    // std::cerr << "satIndex:" << bi->whIdx << " satVal: " << whTable[pcIndex].SatCtrs[bi->whIdx] << " conf: " << whTable[pcIndex].conf<< std::endl;
-                    // get prediction from saturating counter
-                    bi->whPred = (whTable[pcIndex].SatCtrs[bi->whIdx] >=0);
+            // std::cerr << "PCtag: "<< getPCtag(branch_pc,instShiftAmt) << " PC: " << branch_pc << " Branch instance "<< bi << std::endl;
+            // std::cerr << "bi->whLPTotal = "<<bi->whLPTotal << std::endl;
+                bi->whIdx = getSatIndex(pcIndex, bi);
+                // std::cerr << "satIndex:" << bi->whIdx << " satVal: " << whTable[pcIndex].SatCtrs[bi->whIdx] << " conf: " << whTable[pcIndex].conf<< std::endl;
+                // get prediction from saturating counter
+                bi->whPred = (whTable[pcIndex].SatCtrs[bi->whIdx] >=0);
+                
+                if (makePrediction(pcIndex, bi)) {
                     
-                    if (whTable[pcIndex].conf >= 0 && (abs((2*whTable[pcIndex].SatCtrs[bi->whIdx]) + 1) >= SatCtrThres)) {
-                        
-                        // std::cerr << "wh prediction: " <<  bi->whPred << std::endl;
-                        bi->whPrevPred = prev_pred_taken;
-                        pred_taken = bi->whPred;
-                        bi->usedWhPred = true;
+                    // std::cerr << "wh prediction: " <<  bi->whPred << std::endl;
+                    bi->whPrevPred = prev_pred_taken;
+                    pred_taken = bi->whPred;
+                    bi->usedWhPred = true;
 
-                         if(prev_pred_taken != bi->whPred){
-                          //  std::cerr << "\nWormHole Prediction\n";
-                          //  std::cerr << "PCtag: "<< getPCtag(branch_pc,instShiftAmt) << " PC: " << branch_pc << " Branch instance: "<< bi << std::endl;
-                          //  std::cerr << "bi->whLPTotal = "<<bi->whLPTotal << std::endl;
-                          //  std::cerr << "Prior prediction: " << prev_pred_taken << " wh prediction: " <<  bi->whPred << std::endl;
-                          //  std::cerr << "Sat Index: " << bi->whIdx << " Sat Value: "<< whTable[pcIndex].SatCtrs[bi->whIdx] << " conf: " << whTable[pcIndex].conf <<std::endl;
-                          //  std::cerr << "\n";
-                        }
+                        if(prev_pred_taken != bi->whPred){
+                        //  std::cerr << "\nWormHole Prediction\n";
+                        //  std::cerr << "PCtag: "<< getPCtag(branch_pc,instShiftAmt) << " PC: " << branch_pc << " Branch instance: "<< bi << std::endl;
+                        //  std::cerr << "bi->whLPTotal = "<<bi->whLPTotal << std::endl;
+                        //  std::cerr << "Prior prediction: " << prev_pred_taken << " wh prediction: " <<  bi->whPred << std::endl;
+                        //  std::cerr << "Sat Index: " << bi->whIdx << " Sat Value: "<< whTable[pcIndex].SatCtrs[bi->whIdx] << " conf: " << whTable[pcIndex].conf <<std::endl;
+                        //  std::cerr << "\n";
                     }
                 }
-              }
-          }
+            }
     }
 
     return pred_taken;
@@ -171,10 +177,6 @@ WormholePredictor::addworm_entry(Addr branch_pc, unsigned int instShiftAmt)
     WhEntry wormEntry;
 
     wormEntry.SatCtrs.resize(SatCtrSize, 0);
-    // wormEntry->localhist.resize(HistoryVectorSize);
-    // for (int j = 0; j < SatCtrSize; j++) {
-    //     wormEntry.SatCtrs[j] = 0;
-    // }
     wormEntry.PCtag = getPCtag(branch_pc, instShiftAmt);
     wormEntry.conf = 0;
     whTable.push_back(wormEntry);
@@ -193,25 +195,24 @@ WormholePredictor::UpdateRanking(ThreadID tid, Addr branch_pc, int lsum, int thr
         int pcIndex;
 
         pcIndex = pctagsearch(branch_pc, instShiftAmt);
-        if(pcIndex > 0){
+        if((pcIndex = pctagsearch(branch_pc, instShiftAmt)) > 0){
             // std::cerr << "PC: "<<whTable[pcIndex].PCtag <<   " Before Ranking: " << pcIndex << std::endl;
             std::swap(whTable[pcIndex-1], whTable[pcIndex]);
             // std::cerr << "PC: "<<whTable[pcIndex-1].PCtag <<  " After Ranking: " << pcIndex-1 << std::endl;
         }
-
-        // std::cerr << "whTable size " << whTable.size() << " loopPrediction valid " << loopPredValid << std::endl;
-        // if entry doesn't exist, push it to bottom of ranking
-        if (pcIndex == -1 && loopPredValid && bi->whLPTotal >= 7) { // Only allocate if it is inside a loop
-            if (whTable.size() == whtsize) {
+        else{
+            if(pcIndex < 0 && loopPredValid && bi->whLPTotal >= 7){
+                if (whTable.size() == whtsize) {
                 // std::cerr << "wormhole entry deleted. wormhole size is " << whTable.size() << std::endl;
-                whTable.pop_back();
-            }
+                    whTable.pop_back();
+                }
 
-            addworm_entry(branch_pc, instShiftAmt);
-        //    std::cerr << "\nwormhole entry added. wormhole entry size is " <<whTable.size() << std::endl;
-        //    std::cerr << "PCtag: "<< getPCtag(branch_pc,instShiftAmt) << " PC: " << branch_pc << " Branch instance "<< bi << std::endl;
-            
+                addworm_entry(branch_pc, instShiftAmt);
+                //    std::cerr << "\nwormhole entry added. wormhole entry size is " <<whTable.size() << std::endl;
+                //    std::cerr << "PCtag: "<< getPCtag(branch_pc,instShiftAmt) << " PC: " << branch_pc << " Branch instance "<< bi << std::endl;
+            }
         }
+
     }
 }
 
@@ -270,7 +271,7 @@ WormholePredictor::updateConf(BranchInfo* bi, int entry,  bool taken, bool tage_
         // std::cerr << "Dynamic PC: "<< bi << " PC: "<< branch_pc << std::endl;
         // std::cerr << "Update taken: "<< "LPtotal " << bi->whLPTotal << std::endl;
         // std::cerr << "branch PC tag: " << getPCtag(branch_pc, instShiftAmt) << " whLPTotal " << bi->whLPTotal << std::endl;
-        if(bi->whLPTotal >= 7 && whTable[pcIndex].localhist.size() > ((unsigned int)bi->whLPTotal)){
+        if(bi->whLPTotal >= 7 && !recordingloophistory(pcIndex, bi)){
             if(bi->usedWhPred && bi->whPred != bi->whPrevPred){
               //  std::cerr << "Conditional branch update\n";
               //  std::cerr << "PCtag: "<< getPCtag(branch_pc,instShiftAmt) << " PC: " << branch_pc << " Branch instance: "<< bi << std::endl;
