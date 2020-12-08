@@ -195,13 +195,8 @@ WormholePredictor::UpdateRanking(ThreadID tid, Addr branch_pc, int lsum, int thr
         int pcIndex;
 
         pcIndex = pctagsearch(branch_pc, instShiftAmt);
-        if((pcIndex = pctagsearch(branch_pc, instShiftAmt)) > 0){
-            // std::cerr << "PC: "<<whTable[pcIndex].PCtag <<   " Before Ranking: " << pcIndex << std::endl;
-            std::swap(whTable[pcIndex-1], whTable[pcIndex]);
-            // std::cerr << "PC: "<<whTable[pcIndex-1].PCtag <<  " After Ranking: " << pcIndex-1 << std::endl;
-        }
-        else{
-            if(pcIndex < 0 && loopPredValid && bi->whLPTotal >= 7){
+        if((pcIndex = pctagsearch(branch_pc, instShiftAmt)) <= 0){
+            if(pcIndex == -1 && loopPredValid && bi->whLPTotal >= 7){
                 if (whTable.size() == whtsize) {
                 // std::cerr << "wormhole entry deleted. wormhole size is " << whTable.size() << std::endl;
                     whTable.pop_back();
@@ -211,6 +206,12 @@ WormholePredictor::UpdateRanking(ThreadID tid, Addr branch_pc, int lsum, int thr
                 //    std::cerr << "\nwormhole entry added. wormhole entry size is " <<whTable.size() << std::endl;
                 //    std::cerr << "PCtag: "<< getPCtag(branch_pc,instShiftAmt) << " PC: " << branch_pc << " Branch instance "<< bi << std::endl;
             }
+            
+        }
+        else{
+            // std::cerr << "PC: "<<whTable[pcIndex].PCtag <<   " Before Ranking: " << pcIndex << std::endl;
+            std::swap(whTable[pcIndex-1], whTable[pcIndex]);
+            // std::cerr << "PC: "<<whTable[pcIndex-1].PCtag <<  " After Ranking: " << pcIndex-1 << std::endl;
         }
 
     }
