@@ -1,0 +1,18 @@
+hmmcalibrate -- calibrate HMM search statistics
+HMMER 2.3 (May 2003)
+Copyright (C) 1992-2003 HHMI/Washington University School of Medicine
+Freely distributed under the GNU General Public License (GPL)
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+HMM file:                 /home/min/a/ece565/benchspec-2020/CPU2006/456.hmmer//data/ref/input/nph3.hmm
+Length distribution mean: 325
+Length distribution s.d.: 200
+Number of samples:        5000
+random seed:              0
+histogram(s) saved to:    [not saved]
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+HMM    : NPH3
+mu     :  -213.776505
+lambda :     0.125434
+max    :  -153.401993
+//

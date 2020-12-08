@@ -201,7 +201,7 @@ WormholePredictor::UpdateRanking(ThreadID tid, Addr branch_pc, int lsum, int thr
 
         // std::cerr << "whTable size " << whTable.size() << " loopPrediction valid " << loopPredValid << std::endl;
         // if entry doesn't exist, push it to bottom of ranking
-        if (pcIndex == -1 && loopPredValid && bi->whLPTotal >= 7) { // Only allocate if it is inside a loop
+        if (pcIndex == -1 && loopPredValid ) { // Only allocate if it is inside a loop
             if (whTable.size() == whtsize) {
                 // std::cerr << "wormhole entry deleted. wormhole size is " << whTable.size() << std::endl;
                 whTable.pop_back();

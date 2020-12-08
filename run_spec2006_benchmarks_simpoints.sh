@@ -5,10 +5,10 @@
 echo "Out of Order execution with WormHole_benchmarks branch predictor"
 count=0
 i=0
-for bench in astar bwaves bzip2 cactusADM calculix GemsFDTD gobmk h264ref hmmer lbm leslie3d libquantum mcf milc namd omnetpp povray sjeng sphinx3 xalancbmk;
+for bench in astar bzip2 hmmer lbm mcf namd sjeng;
 do 
     echo -e "Executing bench $bench\n"
-    ./build/ARM/gem5.opt -d wormhole/attempt$i/simpoint/$bench configs/spec2k6/run.py -b $bench --simpoint-profile --simpoint-interval 10000000 --cpu-type=NonCachingSimpleCPU &
+    ./build/ARM/gem5.opt -d wise_pred/simpoint/$bench configs/spec2k6/run.py -b $bench --simpoint-profile --simpoint-interval 10000000 --cpu-type=NonCachingSimpleCPU &
     count=$(( $count+1 ))
 
 done
