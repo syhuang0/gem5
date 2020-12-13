@@ -100,7 +100,8 @@ WormholePredictor::pctagsearch(Addr branch_pc, unsigned int instShiftAmt)
 bool
 WormholePredictor::makePrediction(int pcIndex, BranchInfo* bi)
 {
-    return whTable[pcIndex].conf >= 0 && (abs((2*whTable[pcIndex].SatCtrs[bi->whIdx]) + 1) >= SatCtrThres); 
+    int sat_value = whTable[pcIndex].SatCtrs[bi->whIdx]; 
+    return (whTable[pcIndex].conf > 0 && (abs(2*sat_value + 1) >= SatCtrThres)); 
 }
 
 bool 

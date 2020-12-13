@@ -170,7 +170,7 @@ WISL_TAGE::update(ThreadID tid, Addr branch_pc, bool taken, void *bp_history,
         //                                bi->lpBranchInfo->numIter);
 
         wormholepredictor->condBranchUpdate(tid, branch_pc, taken,
-            bi->whBranchInfo->whPrevPred, bi->whBranchInfo, bi->scBranchInfo->lsum,bi->scBranchInfo->thres,
+             bi->tageBranchInfo->tagePred, bi->whBranchInfo, bi->scBranchInfo->lsum,bi->scBranchInfo->thres,
             bi->lpBranchInfo->loopPredValid, instShiftAmt);
 
         bool bias = (bi->tageBranchInfo->longestMatchPred !=
